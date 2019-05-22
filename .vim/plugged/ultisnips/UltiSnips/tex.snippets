@@ -1,0 +1,174 @@
+snippet template "Basic template" b
+\documentclass[fontsize=12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{babel}
+\usepackage{microtype}
+\usepackage{ebgaramond}
+
+\usepackage[letterpaper, magin=1in]{geometry}
+
+\begin{document}
+	$0
+\end{document}
+endsnippet
+
+snippet treport "Report Template" b
+\documentclass{article} % A4 paper and 11pt font size
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[bitstream-charter]{mathdesign}
+
+\usepackage[letterpaper, margin=1.25in]{geometry}
+\usepackage{parskip}
+\usepackage{setspace}
+\usepackage{titlesec}
+\titleformat{\section}[runin]{\normalfont\scshape\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}[runin]{\normalfont\scshape}{\thesection}{1em}{}
+\titlespacing{\section}{0pt}{15pt}{.5em}[]
+
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{
+\normalfont \normalsize 
+\textsc{${1:Course}} \\\ [25pt] % Your university, school and/or department name(s)
+\horrule{0.5pt} \\\[0.4cm] % Thin top horizontal rule
+\huge ${2:Title} % The assignment title
+\horrule{2pt} \\\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{Alex Koen} % Your name
+
+\date{\normalsize ${3:Due Date}} % Today's date or a custom date
+
+\begin{document}
+
+\maketitle % Print the title
+
+\onehalfspacing
+
+$0
+
+\end{document}
+endsnippet
+
+snippet ... "\ldots" iA
+\ldots
+endsnippet
+
+snippet "b(egin)?" "begin{} / end{}" br
+\begin{${1:something}}
+	${0:${VISUAL}}
+\end{$1}
+endsnippet
+
+snippet enum "Enumerate" b
+\begin{enumerate}
+	\item $0
+\end{enumerate}
+endsnippet
+
+snippet item "Itemize" b
+\begin{itemize}
+	\item $0
+\end{itemize}
+endsnippet
+
+snippet desc "Description" b
+\begin{description}
+	\item[$1] $0
+\end{description}
+endsnippet
+
+snippet sec "Section"
+\section{${1:${VISUAL:section name}}}
+$0
+endsnippet
+
+snippet secs "Section Star"
+\section*{${1:${VISUAL:section name}}}
+$0
+endsnippet
+
+snippet sub "Subsection"
+\subsection{${1:${VISUAL:subsection name}}}
+$0
+endsnippet
+
+snippet subs "Subsection Star"
+\subsection*{${1:${VISUAL:subsection name}}}
+$0
+endsnippet
+
+snippet ssubs "Subsubsection Star"
+\subsubsection*{${1:${VISUAL:subsubsection name}}}
+$0
+endsnippet
+
+snippet ssub "Subsubsection"
+\subsubsection{${1:${VISUAL:subsubsection name}}}
+$0
+endsnippet
+
+snippet bcol "Balanced columns"
+\begin{multicols}[2}
+$0
+\vfill\null
+\columnbreak
+
+\end{multicols}
+endsnippet
+
+snippet up "Use Package"
+\usepackage{$1}
+endsnippet
+
+snippet bold "Bold" i
+\textbf{$0}
+endsnippet
+
+snippet it "Italic"
+\textit{$0}
+endsnippet
+
+snippet ss "Superscript" i
+\textsuperscript{$1}$0
+endsnippet
+
+snippet '' "Quote" i
+\`\`$1''$0
+endsnippet
+
+snippet si "SiUnit" i
+\si{$0}
+endsnippet
+
+snippet SI "SiUnitNum" i
+\SI{$1}{$2}$0
+endsnippet
+
+snippet num "Number" i
+\num{$1}$0
+endsnippet
+
+snippet fr "fraction" i
+\frac{$1}{$2}
+endsnippet
