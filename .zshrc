@@ -61,8 +61,15 @@ export GDk_SCALE=2
 alias -g G='| grep' #now you can do: ls foo G something
 
 # Use fzf with rg
-[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
-[ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
+# My different machines use different fzf locations
+
+if [ $HOSTNAME = "Egret" ]; then
+    [ -f /usr/share/fzf/shell/key-bindings.zsh ] && source /usr/share/fzf/shell/key-bindings.zsh
+else
+    [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
+    [ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
+fi
+
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
