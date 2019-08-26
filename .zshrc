@@ -63,7 +63,7 @@ alias -g G='| grep' #now you can do: ls foo G something
 # Use fzf with rg
 # My different machines use different fzf locations
 
-if [ $HOSTNAME = "Egret" ]; then
+if [ "$HOSTNAME" = "Egret" ]; then
     [ -f /usr/share/fzf/shell/key-bindings.zsh ] && source /usr/share/fzf/shell/key-bindings.zsh
 else
     [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
