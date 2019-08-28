@@ -1,0 +1,8 @@
+{  
+"coc.preferences.autoTrigger": "none",
+"coc.preferences.noselect": false,
+"coc.preferences.preferCompleteThanJumpPlaceholder": true,
+"coc.source.dictionary.enable": false,
+"coc.source.tag.enable": false,
+"coc.source.word.enable": false
+}

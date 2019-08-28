@@ -1,0 +1,9 @@
+# This is Git's per-user configuration file.
+[user]
+	name = Alex Koen
+	email = arw.koen@gmail.com
+# Please adapt and uncomment the following lines:
+#	name = Alex Koen
+#	email = arw.koen@gmail.com
+[credential]
+	helper = cache --timeout 3600

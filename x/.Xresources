@@ -1,0 +1,31 @@
+#include ".xrdb/colour/amber"
+
+! HiDPI
+Xft.dpi: 192
+Xft.autohint: false
+Xft.lcdfilter:  lcddefault
+Xft.hintstyle:  hintslight
+Xft.hinting: true
+Xft.antialias: true
+Xft.rgba: rgb
+
+URxvt*scrollBar: false
+URxvt*transparent: false
+! Default is 32. Set to 24 to fix ranger image transparency bug
+URxvt*depth: 24
+
+URxvt*font: xft:Hack:style=regular:size=11
+URxvt*letterSpace: 0
+URxvt*lineSpace: 2
+URxvt*cursorUnderline: true
+
+URxvt*internalBorder: 10
+
+urxvt*fading:   0
+
+rofi.color-enabled: true
+rofi.color-window: #ffffff, #ffffff, #ffffff
+rofi.color-normal: #ffffff, #474c57, #ffffff, #ffffff, #4ec2e8
+rofi.color-active: #ffffff, #fec7cd, #ffffff, #ffffff, #95c1c0
+rofi.color-urgent: #ffffff, #f59335, #ffffff, #ffffff, #f59335 
+rofi.dpi: 192
