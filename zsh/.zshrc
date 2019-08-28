@@ -11,7 +11,8 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-source ~/.antigen.zsh
+# Source antigen, installed system-wide
+source /usr/share/zsh/share/antigen.zsh
 
 # Load the oh-my-zsh library.
 antigen use oh-my-zsh
@@ -26,6 +27,7 @@ antigen bundle common-aliases
 
 # Other bundles
 antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-autosuggestions
 
 # Load the theme
 #antigen theme https://github.com/denysdovhan/spaceship-prompt spaceship
@@ -33,9 +35,6 @@ antigen theme https://github.com/jackharrisonsherlock/common common
 
 # Tell Antigen that you're done
 antigen apply
-
-# Setup autosuggestions
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 ## Aliases
 # Set vim to neovim
@@ -66,7 +65,7 @@ alias -g G='| grep' #now you can do: ls foo G something
 # Use fzf with rg
 # My different machines use different fzf locations
 
-if [ "$HOSTNAME" = "Egret" ]; then
+if [ "$HOSTNAME" = "egret" ]; then
     [ -f /usr/share/fzf/shell/key-bindings.zsh ] && source /usr/share/fzf/shell/key-bindings.zsh
 else
     [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
