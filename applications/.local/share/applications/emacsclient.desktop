@@ -1,0 +1,21 @@
+[Desktop Entry]
+Categories=Development;TextEditor;Utility;
+Comment[en_CA]=Edit text
+Comment=Edit text
+Exec=emacsclient -nc -a "emacs" %F
+GenericName[en_CA]=Text Editor
+GenericName=Text Editor
+Icon=emacs
+MimeType=text/x-tex;text/x-tcl;text/x-pascal;text/x-moc;text/x-makefile;text/x-java;text/x-csrc;text/x-csrc;text/x-chdr;text/x-c++src;text/x-c++hdr;text/plain;application/x-shellscript;
+Name[en_CA]=Emacs (Client)
+Name=Emacs (Client)
+Path=
+StartupNotify=true
+StartupWMClass=Emacs
+Terminal=false
+TerminalOptions=
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
