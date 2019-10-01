@@ -63,7 +63,6 @@ export GDk_SCALE=2
 alias -g G='| grep' #now you can do: ls foo G something
 
 # Use fzf with rg
-# My different machines use different fzf locations
 [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
 [ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
 
