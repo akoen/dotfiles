@@ -104,6 +104,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Android studio
+export ANDROID_HOME=~/Android/
 export PATH=$PATH:~/Android/platform-tools/
 export PATH=$PATH:~/Android/tools
 export PATH=$PATH:~/Android/build-tools/29.0.2/
