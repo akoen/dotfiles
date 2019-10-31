@@ -1,5 +1,8 @@
 " General {{{
 
+" For python support with neovim on Arch linux, install the python-pynvim
+" package;
+
 " Sets how many lines of history VIM has to remember
 let mapleader = ","            " set leader key to ,
 let maplocalleader = "\\"      " set local leader to \
