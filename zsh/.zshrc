@@ -1,3 +1,6 @@
+# load configs
+for config (~/.zsh/*.zsh) source $config
+
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=1000
@@ -55,19 +58,8 @@ alias ls='ls --color=auto'
 # Because vim is good
 alias :q="exit"
 
-# environment variables
-export EDITOR='nvim'
-export MOZ_USE_XINPUT2=1
-export GDk_SCALE=2
 
 alias -g G='| grep' #now you can do: ls foo G something
-
-# Use fzf with rg
-[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
-[ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
-
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # press Ctrl-z to return to vim
 fancy-ctrl-z () {
@@ -81,10 +73,6 @@ fancy-ctrl-z () {
 }
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
-
-# Autocomplete base16 commands
-BASE16_SHELL=$HOME/.config/base16-shell/
-[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
 onmodify() {
     TARGET=${1:-.}; shift
@@ -103,8 +91,3 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# Android studio
-export ANDROID_HOME=~/Android/
-export PATH=$PATH:~/Android/platform-tools/
-export PATH=$PATH:~/Android/tools
-export PATH=$PATH:~/Android/build-tools/29.0.2/
