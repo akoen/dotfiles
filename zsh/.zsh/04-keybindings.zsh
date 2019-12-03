@@ -1,6 +1,11 @@
 # Use vim keybdings
 bindkey -v
 
+# Set shift to capslock system-wide
+setxkbmap -option "caps:ctrl_modifier"
+setxkbmap -option "shift:both_capslock"
+xcape -e "Caps_Lock=Escape"
+
 # press Ctrl-z to return to vim
 fancy-ctrl-z () {
   if [[ $#BUFFER -eq 0 ]]; then

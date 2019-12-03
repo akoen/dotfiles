@@ -9,3 +9,7 @@ onmodify() {
         echo
     done
 }
+
+cmath(){
+    xclip -o | sed 's/<math>/ \\(/g;  s/<\/math>/\\) /g' | xclip -i
+}

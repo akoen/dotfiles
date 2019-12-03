@@ -17,5 +17,7 @@ alias ls='ls --color=auto'
 # Because vim is good
 alias :q="exit"
 
-
 alias -g G='| grep' #now you can do: ls foo G something
+
+# Make xclip use the primary selection
+alias xclip="xclip -selection c"
