@@ -1,5 +1,5 @@
-# Use vim keybdings
-bindkey -v
+# Use emacs keybdings
+bindkey -e
 
 # Set shift to capslock system-wide
 setxkbmap -option "caps:ctrl_modifier"
