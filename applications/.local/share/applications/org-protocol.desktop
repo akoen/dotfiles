@@ -1,19 +1,7 @@
 [Desktop Entry]
-Categories=System;
-Comment[en_CA]=
-Comment=
-Exec=emacsclient %u
-GenericName[en_CA]=
-GenericName=
-MimeType=
-Name[en_CA]=org-protocol
 Name=org-protocol
-Path=
-StartupNotify=true
-Terminal=false
-TerminalOptions=
+Exec=/home/alex/bin/emacs-capture %u
 Type=Application
-X-DBUS-ServiceName=
-X-DBUS-StartupType=
-X-KDE-SubstituteUID=false
-X-KDE-Username=
+Terminal=false
+Categories=System;
+MimeType=x-scheme-handler/org-protocol;
