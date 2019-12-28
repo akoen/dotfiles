@@ -116,7 +116,7 @@ user = {
     -- web_search_cmd = "exo-open https://www.google.com/search?q="
 
     -- >> Music <<
-    music_client = "kitty -1 --class music -e ncmpcpp",
+    music_client = "termite --class music -e spt",
 
     -- TODO
     -- >> Screenshots <<
@@ -153,7 +153,7 @@ user = {
     -- >> Lock screen <<
     -- You can set this to whatever you want or leave it empty in
     -- order to unlock with just the Enter key.
-    lock_screen_password = "awesome",
+    lock_screen_password = "open",
     -- lock_screen_password = "",
 
     -- >> Weather <<
