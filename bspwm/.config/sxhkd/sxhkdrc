@@ -2,10 +2,6 @@
 # wm independent hotkeys
 #
 
-# show help on key bindings
-# super + ctrl + h
-    # urxvt -geometry 170x30 -name urxvt_keys_help -e ~/.config/sxhkd/show_help.sh
-
 # terminal emulator
 super + Return
 	termite

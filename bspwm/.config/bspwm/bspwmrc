@@ -33,7 +33,7 @@ bspc rule -a Emacs state=tiled
 bspc rule -a URxvt:urxvt_keys_help state=floating
 
 # Set wallpaper
-feh --bg-fill ~/Pictures/wallpapers/serenity.jpg
+feh --bg-fill ~/Drive/Resources/Wallpapers/earth.png
 
 # Set custom keyboard configuration
 #setxkbmap -option caps:escape
