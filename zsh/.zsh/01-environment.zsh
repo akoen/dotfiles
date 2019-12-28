@@ -10,3 +10,6 @@ export ANDROID_HOME=~/Android/
 export PATH=$PATH:~/Android/platform-tools/
 export PATH=$PATH:~/Android/tools
 export PATH=$PATH:~/Android/build-tools/29.0.2/
+
+# LaTeX
+export TEXMFHOME=$HOME/.texmf
