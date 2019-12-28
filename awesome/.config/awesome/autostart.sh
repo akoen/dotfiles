@@ -15,8 +15,7 @@ function run {
 }
 
 # Music
-# run mpd
-# (Alternatively, enable the mpd service so mpd runs on login)
+run spotifyd
 
 # Emacs daemon
 #run emacs --daemon
