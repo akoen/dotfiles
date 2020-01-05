@@ -14,9 +14,6 @@ function run {
     fi
 }
 
-# Music
-run spotifyd
-
 # Emacs daemon
 #run emacs --daemon
 

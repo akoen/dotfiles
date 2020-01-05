@@ -39,7 +39,7 @@ keys.desktopbuttons = gears.table.join(
 
     -- Middle button - Toggle start scren
     awful.button({ }, 2, function ()
-        start_screen_show()
+          start_screen_show()
     end),
 
     -- Scrolling - Switch tags
@@ -102,32 +102,6 @@ keys.globalkeys = gears.table.join(
         end,
         {description = "focus right", group = "client"}),
 
-    -- Focus client by direction (arrow keys)
-    awful.key({ superkey }, "Down",
-        function()
-            awful.client.focus.bydirection("down")
-            if client.focus then client.focus:raise() end
-        end,
-        {description = "focus down", group = "client"}),
-    awful.key({ superkey }, "Up",
-        function()
-            awful.client.focus.bydirection("up")
-            if client.focus then client.focus:raise() end
-        end,
-        {description = "focus up", group = "client"}),
-    awful.key({ superkey }, "Left",
-        function()
-            awful.client.focus.bydirection("left")
-            if client.focus then client.focus:raise() end
-        end,
-        {description = "focus left", group = "client"}),
-    awful.key({ superkey }, "Right",
-        function()
-            awful.client.focus.bydirection("right")
-            if client.focus then client.focus:raise() end
-        end,
-        {description = "focus right", group = "client"}),
-
     -- Focus client by index (cycle through clients)
     -- Double tap: choose client with rofi
     awful.key({ superkey }, "Tab",
@@ -168,31 +142,18 @@ keys.globalkeys = gears.table.join(
     ),
 
     -- Resize focused client or layout factor
-    -- (Arrow keys)
-    awful.key({ superkey, ctrlkey }, "Down", function (c)
-        helpers.resize_dwim(client.focus, "down")
-    end),
-    awful.key({ superkey, ctrlkey }, "Up", function (c)
-        helpers.resize_dwim(client.focus, "up")
-    end),
-    awful.key({ superkey, ctrlkey }, "Left", function (c)
-        helpers.resize_dwim(client.focus, "left")
-    end),
-    awful.key({ superkey, ctrlkey }, "Right", function (c)
-        helpers.resize_dwim(client.focus, "right")
-    end),
     -- (Vim keys)
     awful.key({ superkey, ctrlkey }, "j", function (c)
-        helpers.resize_dwim(client.focus, "down")
+          helpers.resize_dwim(client.focus, "down")
     end),
     awful.key({ superkey, ctrlkey }, "k", function (c)
-        helpers.resize_dwim(client.focus, "up")
+          helpers.resize_dwim(client.focus, "up")
     end),
     awful.key({ superkey, ctrlkey }, "h", function (c)
-        helpers.resize_dwim(client.focus, "left")
+          helpers.resize_dwim(client.focus, "left")
     end),
     awful.key({ superkey, ctrlkey }, "l", function (c)
-        helpers.resize_dwim(client.focus, "right")
+          helpers.resize_dwim(client.focus, "right")
     end),
 
     -- No need for these (single screen setup)
@@ -321,9 +282,9 @@ keys.globalkeys = gears.table.join(
     --awful.key({ superkey },            "d",     function () awful.screen.focused().mypromptbox:run() end,
     --{description = "run prompt", group = "launcher"}),
 
-    -- Run program (d for dmenu ;)
-    awful.key({ superkey }, "d",
-        function()
+    -- Run program
+    awful.key({ superkey }, "space",
+       function()
             awful.spawn.with_shell("rofi -matching fuzzy -show combi")
         end,
         {description = "rofi launcher", group = "launcher"}),
@@ -416,28 +377,28 @@ keys.globalkeys = gears.table.join(
         {description = "toggle tray visibility", group = "awesome"}),
 
     -- Media
-    awful.key({ superkey }, "period", function() awful.spawn.with_shell("mpc -q next") end,
-        {description = "next song", group = "media"}),
-    awful.key({ superkey }, "comma", function() awful.spawn.with_shell("mpc -q prev") end,
-        {description = "previous song", group = "media"}),
-    awful.key({ superkey }, "space", function() awful.spawn.with_shell("mpc -q toggle") end,
-        {description = "toggle pause/play", group = "media"}),
-    awful.key({ superkey, shiftkey }, "period", function() awful.spawn.with_shell("mpvc next") end,
-        {description = "mpv next song", group = "media"}),
-    awful.key({ superkey, shiftkey }, "comma", function() awful.spawn.with_shell("mpvc prev") end,
-        {description = "mpv previous song", group = "media"}),
-    awful.key({ superkey, shiftkey}, "space", function() awful.spawn.with_shell("mpvc toggle") end,
-        {description = "mpv toggle pause/play", group = "media"}),
-    awful.key({ superkey }, "F8", function() awful.spawn.with_shell("mpvc quit") end,
-        {description = "mpv quit", group = "media"}),
+    -- awful.key({ superkey }, "period", function() awful.spawn.with_shell("mpc -q next") end,
+    --     {description = "next song", group = "media"}),
+    -- awful.key({ superkey }, "comma", function() awful.spawn.with_shell("mpc -q prev") end,
+    --     {description = "previous song", group = "media"}),
+    -- awful.key({ superkey }, "space", function() awful.spawn.with_shell("mpc -q toggle") end,
+    --     {description = "toggle pause/play", group = "media"}),
+    -- awful.key({ superkey, shiftkey }, "period", function() awful.spawn.with_shell("mpvc next") end,
+    --     {description = "mpv next song", group = "media"}),
+    -- awful.key({ superkey, shiftkey }, "comma", function() awful.spawn.with_shell("mpvc prev") end,
+    --     {description = "mpv previous song", group = "media"}),
+    -- awful.key({ superkey, shiftkey}, "space", function() awful.spawn.with_shell("mpvc toggle") end,
+    --     {description = "mpv toggle pause/play", group = "media"}),
+    -- awful.key({ superkey }, "F8", function() awful.spawn.with_shell("mpvc quit") end,
+    --     {description = "mpv quit", group = "media"}),
 
-    awful.key({ superkey }, "F7", function() awful.spawn.with_shell("freeze firefox") end,
-        {description = "send STOP signal to all firefox processes", group = "other"}),
-    awful.key({ superkey, shiftkey }, "F7", function() awful.spawn.with_shell("freeze -u firefox") end,
-        {description = "send CONT signal to all firefox processes", group = "other"}),
+    -- awful.key({ superkey }, "F7", function() awful.spawn.with_shell("freeze firefox") end,
+    --     {description = "send STOP signal to all firefox processes", group = "other"}),
+    -- awful.key({ superkey, shiftkey }, "F7", function() awful.spawn.with_shell("freeze -u firefox") end,
+    --     {description = "send CONT signal to all firefox processes", group = "other"}),
 
-    awful.key({ superkey }, "q", function() helpers.toggle_scratchpad() end,
-        {description = "scratchpad", group = "launcher"}),
+    -- awful.key({ superkey }, "q", function() helpers.toggle_scratchpad() end,
+    --     {description = "scratchpad", group = "launcher"}),
 
     -- Max layout
     -- Single tap: Set max layout
@@ -491,10 +452,6 @@ keys.globalkeys = gears.table.join(
                                  end,
         {description = "App drawer", group = "custom"}),
 
-    -- Pomodoro timer
-    awful.key({ superkey }, "slash", function() awful.spawn.with_shell("pomodoro") end,
-        {description = "pomodoro", group = "launcher"}),
-
     -- Spawn ranger in a terminal
     awful.key({ superkey }, "F2", function() awful.spawn(user.terminal .. " -e ranger") end,
         {description = "ranger", group = "launcher"}),
@@ -503,14 +460,6 @@ keys.globalkeys = gears.table.join(
     awful.key({ superkey }, "F3",
         function() helpers.run_or_raise({class = "music"}, true, user.music_client) end,
         {description = "music client", group = "launcher"}),
-
-    -- Spawn cava in a terminal
-    awful.key({ superkey }, "F4", function() awful.spawn("visualizer") end,
-        {description = "cava", group = "launcher"}),
-
-    -- Spawn ncmpcpp in a terminal, with a special visualizer config
-    awful.key({ superkey, shiftkey }, "F4", function() awful.spawn(user.terminal .. " -e 'ncmpcpp -c ~/.config/ncmpcpp/config_visualizer -s visualizer'") end,
-        {description = "ncmpcpp", group = "launcher"}),
 
     -- Network dialog: nmapplet rofi frontend
     awful.key({ superkey }, "F11", function() awful.spawn("networks-rofi") end,
@@ -555,20 +504,8 @@ keys.globalkeys = gears.table.join(
 
 keys.clientkeys = gears.table.join(
     -- Move to edge or swap by direction
-    awful.key({ superkey, shiftkey }, "Down", function (c)
-        helpers.move_client_dwim(c, "down")
-    end),
-    awful.key({ superkey, shiftkey }, "Up", function (c)
-        helpers.move_client_dwim(c, "up")
-    end),
-    awful.key({ superkey, shiftkey }, "Left", function (c)
-        helpers.move_client_dwim(c, "left")
-    end),
-    awful.key({ superkey, shiftkey }, "Right", function (c)
-        helpers.move_client_dwim(c, "right")
-    end),
     awful.key({ superkey, shiftkey }, "j", function (c)
-        helpers.move_client_dwim(c, "down")
+          helpers.move_client_dwim(c, "down")
     end),
     awful.key({ superkey, shiftkey }, "k", function (c)
         helpers.move_client_dwim(c, "up")
@@ -580,18 +517,6 @@ keys.clientkeys = gears.table.join(
         helpers.move_client_dwim(c, "right")
     end),
 
-    -- Single tap: Center client 
-    -- Double tap: Center client + Floating + Resize
-    awful.key({ superkey }, "c", function (c)
-        awful.placement.centered(c, {honor_workarea = true, honor_padding = true})
-        helpers.single_double_tap(
-            nil,
-            function ()
-                helpers.float_and_resize(c, screen_width * 0.65, screen_height * 0.9)
-            end
-        )
-    end),
-    
     -- Relative move client
     awful.key({ superkey, shiftkey, ctrlkey }, "j", function (c)
         c:relative_move(0,  dpi(20), 0, 0)
@@ -603,18 +528,6 @@ keys.clientkeys = gears.table.join(
         c:relative_move(dpi(-20), 0, 0, 0)
     end),
     awful.key({ superkey, shiftkey, ctrlkey }, "l", function (c)
-        c:relative_move(dpi( 20), 0, 0, 0)
-    end),
-    awful.key({ superkey, shiftkey, ctrlkey }, "Down", function (c)
-        c:relative_move(0,  dpi(20), 0, 0)
-    end),
-    awful.key({ superkey, shiftkey, ctrlkey }, "Up", function (c)
-        c:relative_move(0, dpi(-20), 0, 0)
-    end),
-    awful.key({ superkey, shiftkey, ctrlkey }, "Left", function (c)
-        c:relative_move(dpi(-20), 0, 0, 0)
-    end),
-    awful.key({ superkey, shiftkey, ctrlkey }, "Right", function (c)
         c:relative_move(dpi( 20), 0, 0, 0)
     end),
 
@@ -651,18 +564,6 @@ keys.clientkeys = gears.table.join(
         end,
         {description = "toggle fullscreen", group = "client"}),
 
-    -- F for focused view
-    awful.key({ superkey, ctrlkey  }, "f",
-        function (c)
-            helpers.float_and_resize(c, screen_width * 0.7, screen_height * 0.75)
-        end,
-        {description = "focus mode", group = "client"}),
-    -- V for vertical view
-    awful.key({ superkey, ctrlkey  }, "v",
-        function (c)
-            helpers.float_and_resize(c, screen_width * 0.45, screen_height * 0.90)
-        end,
-        {description = "focus mode", group = "client"}),
     -- T for tiny window
     awful.key({ superkey, ctrlkey  }, "t",
         function (c)
@@ -677,16 +578,14 @@ keys.clientkeys = gears.table.join(
         {description = "normal mode", group = "client"}),
 
     -- Close client
-    awful.key({ superkey, shiftkey   }, "q",      function (c) c:kill() end,
-        {description = "close", group = "client"}),
-    awful.key({ altkey }, "F4",      function (c) c:kill() end,
-        {description = "close", group = "client"}),
+    awful.key({ superkey }, "q",      function (c) c:kill() end,
+       {description = "close", group = "client"}),
 
     -- Toggle floating client
-    awful.key({ superkey, ctrlkey }, "space",
-        function(c)
-            local layout_is_floating = (awful.layout.get(mouse.screen) == awful.layout.suit.floating)
-            if not layout_is_floating then
+    awful.key({ superkey, ctrlkey }, "s",
+       function(c)
+          local layout_is_floating = (awful.layout.get(mouse.screen) == awful.layout.suit.floating)
+          if not layout_is_floating then
                 awful.client.floating.toggle()
             end
             c:raise()
@@ -718,10 +617,10 @@ keys.clientkeys = gears.table.join(
         {description = "toggle sticky", group = "client"}),
 
     -- Minimize
-    awful.key({ superkey,           }, "n",
-        function (c)
-            -- The client currently has the input focus, so it cannot be
-            -- minimized, since minimized clients can't have the focus.
+    awful.key({ superkey }, "n",
+       function (c)
+          -- The client currently has the input focus, so it cannot be
+          -- minimized, since minimized clients can't have the focus.
             c.minimized = true
         end ,
         {description = "minimize", group = "client"}),
