@@ -20,6 +20,12 @@ function run {
 # Load terminal colorscheme and settings
 xrdb ~/.Xresources
 
+# Insync
+run insync
+
+# Drobox
+run dropbox
+
 # Urxvt daemon
 # run urxvtd -q -o -f
 
@@ -29,7 +35,7 @@ if [ ! -e /tmp/mpv.fifo ]; then
 fi
 
 # Desktop effects
-#run compton --config ~/.config/compton/compton.conf
+run picom --config ~/.config/picom/picom.conf
 
 # Enable numlock on login
 # Required numlockx to be installed
