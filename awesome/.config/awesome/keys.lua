@@ -360,14 +360,14 @@ keys.globalkeys = gears.table.join(
     -- Screenshots
     awful.key( { }, "Print", function() helpers.screenshot("full") end,
         {description = "take full screenshot", group = "screenshots"}),
-    awful.key( { superkey, shiftkey }, "c", function() helpers.screenshot("selection") end,
-        {description = "select area to capture", group = "screenshots"}),
-    awful.key( { superkey, ctrlkey }, "c", function() helpers.screenshot("clipboard") end,
-        {description = "select area to copy to clipboard", group = "screenshots"}),
-    awful.key( { superkey }, "Print", function() helpers.screenshot("browse") end,
-        {description = "browse screenshots", group = "screenshots"}),
-    awful.key( { superkey, shiftkey }, "Print", function() helpers.screenshot("gimp") end,
-        {description = "edit most recent screenshot with gimp", group = "screenshots"}),
+    awful.key( { superkey, shiftkey }, "Print", function() helpers.screenshot("selection") end,
+       {description = "select area to capture", group = "screenshots"}),
+    awful.key( { superkey }, "Print", function() helpers.screenshot("clipboard") end,
+       {description = "select area to copy to clipboard", group = "screenshots"}),
+    awful.key( { superkey, shiftkey }, "c", function() helpers.screenshot("browse") end,
+       {description = "browse screenshots", group = "screenshots"}),
+    awful.key( { superkey, ctrlkey }, "c", function() helpers.screenshot("gimp") end,
+       {description = "edit most recent screenshot with gimp", group = "screenshots"}),
 
     -- Toggle tray visibility
     awful.key({ superkey }, "=",
