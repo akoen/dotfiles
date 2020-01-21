@@ -26,6 +26,9 @@ run insync
 # Drobox
 run dropbox
 
+# Spotify
+run spotifyd
+
 # Urxvt daemon
 # run urxvtd -q -o -f
 
