@@ -8,9 +8,6 @@ alias spotify='spotify --force-device-scale-factor=2'
 # Start spotifyd with spt
 alias spt='spotifyd &; spt'
 
-# Doom Emacs
-alias doom="emacs -q --load '~/.doom/init.el'"
-
 # Update system
 alias update='sudo pacman -Syu'
 
