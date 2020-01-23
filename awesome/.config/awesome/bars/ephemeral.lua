@@ -38,6 +38,8 @@ local create_button = function (symbol, color, bg_color, hover_color)
     return section
 end
 
+local mytextclock = wibox.widget.textclock("%H:%M")
+
 local exit = create_button("", beautiful.xcolor6, beautiful.xcolor8.."C0",beautiful.xcolor8.."E0")
 exit:buttons(gears.table.join(
     awful.button({ }, 1, function ()
@@ -284,6 +286,7 @@ awful.screen.connect_for_each_screen(function(s)
             volume,
             microphone,
             music,
+            mytextclock,
             exit,
             layout = wibox.layout.fixed.horizontal
         },
