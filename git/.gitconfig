@@ -1,11 +1,6 @@
 # This is Git's per-user configuration file.
 [user]
-	name = Alex Koen
+	name = akoen
 	email = arw.koen@gmail.com
-# Please adapt and uncomment the following lines:
-#	name = Alex Koen
-#	email = arw.koen@gmail.com
 [credential]
-	helper = cache --timeout 3600
-[github]
-	user = akoen
+	helper = /usr/bin/pass-git-helper
