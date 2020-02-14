@@ -4,3 +4,5 @@
 	email = arw.koen@gmail.com
 [credential]
 	helper = /usr/bin/pass-git-helper
+[github]
+	user = akoen
