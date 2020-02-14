@@ -108,7 +108,7 @@ user = {
     file_manager = "dolphin",
     tmux = "kitty -1 -e tmux new",
     -- editor = "kitty -1 --class editor -e vim",
-    editor = "emacsclient -nc",
+    editor = "emacs",
 
     -- >> Search <<
     -- web_search_cmd = "exo-open https://duckduckgo.com/?q="
