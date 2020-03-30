@@ -596,18 +596,6 @@ keys.clientkeys = gears.table.join(
     awful.key({ superkey, ctrlkey }, "Return", function (c) c:swap(awful.client.getmaster()) end,
         {description = "move to master", group = "client"}),
 
-    -- Change client opacity
-    awful.key({ superkey }, "o",
-        function (c)
-            c.opacity = c.opacity - 0.1
-        end,
-        {description = "decrease client opacity", group = "client"}),
-    awful.key({ superkey, shiftkey }, "o",
-        function (c)
-            c.opacity = c.opacity + 0.1
-        end,
-        {description = "increase client opacity", group = "client"}),
-
     -- P for pin: keep on top OR sticky
     -- On top
     awful.key({ superkey, shiftkey }, "p", function (c) c.ontop = not c.ontop end,
