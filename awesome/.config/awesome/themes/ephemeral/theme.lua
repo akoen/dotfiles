@@ -29,7 +29,7 @@ theme.wallpaper_lock = os.getenv("HOME") .. "/.config/awesome/themes/" .. theme_
 
 -- Set the theme font. This is the font that will be used by default in menus, bars, titlebars etc.
 -- theme.font          = "sans 11"
-theme.font          = "monospace 11"
+theme.font          = "San Francisco Display 11"
 
 -- Get colors from .Xresources and set fallback colors
 theme.xbackground = xrdb.background or "#1D1F28"
