@@ -13,3 +13,7 @@ export PATH=$PATH:~/Android/build-tools/29.0.2/
 
 # LaTeX
 export TEXMFHOME=$HOME/.texmf
+
+# C Compiler
+export CC=/usr/bin/clang
+export CXX=/usr/bin/clang++
