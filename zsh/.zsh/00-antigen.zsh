@@ -10,7 +10,6 @@ antigen bundle heroku
 antigen bundle pip
 antigen bundle lein
 antigen bundle command-not-found
-antigen bundle common-aliases
 
 # Other bundles
 antigen bundle zsh-users/zsh-syntax-highlighting
