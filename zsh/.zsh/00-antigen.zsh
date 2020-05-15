@@ -6,9 +6,6 @@ antigen use oh-my-zsh
 
 # Bundles from the default repo
 antigen bundle git
-antigen bundle heroku
-antigen bundle pip
-antigen bundle lein
 antigen bundle command-not-found
 
 # Other bundles
