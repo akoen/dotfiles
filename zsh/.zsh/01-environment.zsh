@@ -7,9 +7,13 @@ export GDk_SCALE=2
 
 # Android studio
 export ANDROID_HOME=~/Android/
+export PATH=$PATH:~/Android/emulator/
 export PATH=$PATH:~/Android/platform-tools/
 export PATH=$PATH:~/Android/tools
 export PATH=$PATH:~/Android/build-tools/29.0.2/
+
+# Python
+export PATH=$PATH:~/.local/bin/
 
 # LaTeX
 export TEXMFHOME=$HOME/.texmf
