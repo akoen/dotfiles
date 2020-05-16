@@ -3,6 +3,6 @@
 	name = akoen
 	email = arw.koen@gmail.com
 [credential]
-	helper = store
+	helper = /usr/bin/pass-git-helper
 [github]
 	user = akoen
