@@ -1,9 +1,16 @@
 # environment variables
-export EDITOR='emacsclient -nw'
+
+# Cleanup
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+
+export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
+
+export EDITOR='nvim'
 
 export PATH=$HOME/bin:$PATH
-export MOZ_USE_XINPUT2=1
-export GDk_SCALE=2
+# export MOZ_USE_XINPUT2=1
+# export GDk_SCALE=2
 
 # Android studio
 export ANDROID_HOME=~/Android/
@@ -21,3 +28,8 @@ export TEXMFHOME=$HOME/.texmf
 # C Compiler
 export CC=/usr/bin/clang
 export CXX=/usr/bin/clang++
+
+# Use all cores for makepkg
+# https://wiki.archlinux.org/index.php/Makepkg#Improving_compile_times
+export MAKEFLAGS="-j$(nproc)"
+

@@ -1,5 +1,7 @@
-# Source antigen, installed system-wide
-source /usr/share/zsh/share/antigen.zsh
+export ADOTDIR=$HOME/.local/share/antigen
+
+# Source antigen, installed locally
+source ~/.config/zsh/antigen.zsh
 
 # Load the oh-my-zsh library.
 antigen use oh-my-zsh
