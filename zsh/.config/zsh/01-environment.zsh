@@ -13,11 +13,18 @@ export PATH=$HOME/bin:$PATH
 # export GDk_SCALE=2
 
 # Android studio
-export ANDROID_HOME=~/Android/
-export PATH=$PATH:~/Android/emulator/
-export PATH=$PATH:~/Android/platform-tools/
-export PATH=$PATH:~/Android/tools
-export PATH=$PATH:~/Android/build-tools/29.0.2/
+# export ANDROID_HOME=~/Android/
+# export PATH=$PATH:~/Android/emulator/
+# export PATH=$PATH:~/Android/platform-tools/
+# export PATH=$PATH:~/Android/tools
+# export PATH=$PATH:~/Android/build-tools/29.0.2/
+
+export ANDROID_HOME=/opt/android-sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+# Fixes blank screen when using bspwm
+export _JAVA_AWT_WM_NONREPARENTING=1
 
 # Python
 export PATH=$PATH:~/.local/bin/
