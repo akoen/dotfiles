@@ -7,46 +7,68 @@ Xft.hinting: true
 Xft.antialias: true
 Xft.rgba: rgb
 
-rofi.color-enabled: true
-rofi.color-window: #ffffff, #ffffff, #ffffff
-rofi.color-normal: #ffffff, #474c57, #ffffff, #ffffff, #4ec2e8
-rofi.color-active: #ffffff, #fec7cd, #ffffff, #ffffff, #95c1c0
-rofi.color-urgent: #ffffff, #f59335, #ffffff, #ffffff, #f59335 
+!! Colours
 
-! special
-*.foreground:   #c5c8c6
-*.background:   #1d1f21
-*.cursorColor:  #c5c8c6
+#define FOREGROUND #c0c5ce
+#define BACKGROUND #1d1d1d
+#define CURSORCOLOR #c0c5ce
 
 ! black
-*.color0:       #282a2e
-*.color8:       #373b41
+#define COLOR0 #2b303b
+#define COLOR8 #65737e
 
 ! red
-*.color1:       #a54242
-*.color9:       #cc6666
+#define COLOR1 #bf616a
+#define COLOR9 #bf616a
 
 ! green
-*.color2:       #8c9440
-*.color10:      #b5bd68
+#define COLOR2 #a3be8c
+#define COLOR10 #a3be8c
 
 ! yellow
-*.color3:       #de935f
-*.color11:      #f0c674
+#define COLOR3 #ebcb8b
+#define COLOR11 #ebcb8b
 
 ! blue
-*.color4:       #5f819d
-*.color12:      #81a2be
+#define COLOR4 #8fa1b3
+#define COLOR12 #8fa1b3
 
 ! magenta
-*.color5:       #85678f
-*.color13:      #b294bb
+#define COLOR5 #b48ead
+#define COLOR13 #b48ead
 
 ! cyan
-*.color6:       #5e8d87
-*.color14:      #8abeb7
+#define COLOR6 #96b5b4
+#define COLOR14 #96b5b4
 
 ! white
-*.color7:       #707880
-*.color15:      #c5c8c6
+#define COLOR7 #c0c5ce
+#define COLOR15 #eff1f5
 
+*.foreground: FOREGROUND
+*.background: BACKGROUND
+*.cursorColor: CURSORCOLOR
+*.color0: COLOR0
+*.color8: COLOR8
+*.color1: COLOR1
+*.color9: COLOR9
+*.color2: COLOR2
+*.color10: COLOR10
+*.color3: COLOR3
+*.color11: COLOR11
+*.color4: COLOR4
+*.color12: COLOR12
+*.color5: COLOR5
+*.color13: COLOR13
+*.color6: COLOR6
+*.color14: COLOR14
+*.color7: COLOR7
+*.color15: COLOR15
+
+! special
+
+rofi.color-enabled: true
+rofi.color-window: BACKGROUND, BACKGROUND, BACKGROUND
+rofi.color-normal: BACKGROUND, FOREGROUND, BACKGROUND, BACKGROUND, COLOR1
+rofi.color-active: BACKGROUND, FOREGROUND, BACKGROUND, BACKGROUND, COLOR1
+rofi.color-urgent: BACKGROUND, FOREGROUND, BACKGROUND, BACKGROUND, COLOR1
