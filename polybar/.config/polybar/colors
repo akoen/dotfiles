@@ -1,0 +1,30 @@
+[colors]
+
+black       = ${xrdb:color0}
+lightgray   = ${xrdb:color8}
+
+darkred     = ${xrdb:color1}
+red         = ${xrdb:color9}
+
+darkgreen   = ${xrdb:color2}
+green       = ${xrdb:color10}
+
+darkyellow  = ${xrdb:color3}
+yellow      = ${xrdb:color11}
+
+darkblue    = ${xrdb:color4}
+blue        = ${xrdb:color12}
+
+magenta     = ${xrdb:color5}
+purple      = ${xrdb:color13}
+
+darkcyan    = ${xrdb:color6}
+cyan        = ${xrdb:color14}
+
+grey        = ${xrdb:color7}
+white       = ${xrdb:color15}
+
+foreground = ${xrdb:foreground}
+background = ${xrdb:background}
+accent     = ${colors.red}
+alert      = ${colors.red}
