@@ -1,4 +1,5 @@
 # environment variables
+export DISPLAY=:0
 
 # Cleanup
 export XDG_CONFIG_HOME="$HOME/.config"
