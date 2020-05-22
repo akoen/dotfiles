@@ -4,7 +4,7 @@
 
 # terminal emulator
 super + Return
-	termite
+	kitty
 
 # program launcher
 super + space
@@ -35,6 +35,10 @@ XF86AudioLowerVolume
  
 super + XF86AudioLowerVolume
     amixer set Master 0.5%-,1%-;
+
+# Screenshot
+super + Print
+    maim -u -m 5 -s /tmp/maim_clipboard  && xclip -selection clipboard -t image/png /tmp/maim_clipboard && rm /tmp/maim_clipboard;
  
 # BRIGHTNESS
  
@@ -44,13 +48,6 @@ XF86MonBrightnessUp
 # Brightness goes down
 XF86MonBrightnessDown
     light -U 5;
-
-# keyboard layout
-super + alt + e
-   setxkbmap us 
-
-super + alt + f
-    setxkbmap ca multix
 
 #
 # bspwm hotkeys
