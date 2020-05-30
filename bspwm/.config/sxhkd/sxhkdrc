@@ -4,7 +4,7 @@
 
 # terminal emulator
 super + Return
-	kitty
+	urxvt
 
 # program launcher
 super + space
@@ -12,7 +12,7 @@ super + space
 
 # emacsclient
 super + e
-    emacsclient -nc
+      emacs
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -21,20 +21,11 @@ super + Escape
 ###Volume
 ### Mute
 XF86AudioMute
-    amixer -D pulse set Master toggle
+    pulsemixer --toggle-mute
  
 ### Master Volume
-XF86AudioRaiseVolume
-    amixer set Master 2.5%+,5%+;
- 
-super + XF86AudioRaiseVolume
-    amixer set Master 0.5%+,1%+;
- 
-XF86AudioLowerVolume
-    amixer set Master 2.5%-,5%-;
- 
-super + XF86AudioLowerVolume
-    amixer set Master 0.5%-,1%-;
+XF86Audio{Raise,Lower}Volume
+    pulsemixer --change-volume {+,-}5
 
 # Screenshot
 super + Print
