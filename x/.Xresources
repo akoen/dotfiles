@@ -65,10 +65,29 @@ Xft.rgba: rgb
 *.color7: COLOR7
 *.color15: COLOR15
 
-! special
+! Applications
 
 rofi.color-enabled: true
 rofi.color-window: BACKGROUND, BACKGROUND, BACKGROUND
 rofi.color-normal: BACKGROUND, FOREGROUND, BACKGROUND, BACKGROUND, COLOR1
 rofi.color-active: BACKGROUND, FOREGROUND, BACKGROUND, BACKGROUND, COLOR1
 rofi.color-urgent: BACKGROUND, FOREGROUND, BACKGROUND, BACKGROUND, COLOR1
+ 
+URxvt*scrollBar: false
+URxvt*transparent: false
+URxvt*font: xft:Fira Code:style=regular:size=12
+URxvt*letterSpace: 0
+URxvt*lineSpace: 2
+URxvt*cursorUnderline: true
+URxvt*internalBorder: 24
+urxvt*fading:   0
+
+! Plugins
+URxvt.perl-ext-common: default,matcher,tabbed
+
+! tabs
+URxvt.tabbed.new-button: false
+
+! clickable url
+URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.matcher.button: 1
