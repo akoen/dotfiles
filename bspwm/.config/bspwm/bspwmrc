@@ -17,6 +17,8 @@ bspc config bottom_padding 0
 bspc config left_padding 0
 bspc config right_padding 0
 
+bspc config ignore_ewmh_focus   true # Do not follow opened windows when requested
+
 # xrdb
 function get_xrdb() {
   xrdb -query | grep "$1" | awk '{print $2}' | tail -n1
@@ -35,10 +37,17 @@ bspc rule -a Emacs state=tiled
 # Set wallpaper
 feh --bg-fill ~/.config/wall
 
-killall -9 polybar redshift pircom dunst
+killall -9 polybar redshift dunst
 
-# Applications
+# Default workspace
+bspc rule -a Tilix:tilix -o desktop=IX && tilix -e spt &
+
+bspc rule -a Emacs -o desktop=X && emacs --eval "(org-agenda-list)" &
+bspc rule -a Gnome-calendar -o desktop=X && gnome-calendar &
+bspc rule -a Geary -o desktop=X && geary &
+
+# Autostart
 $HOME/.config/polybar/launch.sh
 redshift -l 49.1:-123.7 -t 5700:3000 &
-picom --config ~/.config/picom.conf -b &
+flameshot &
 dunst &
