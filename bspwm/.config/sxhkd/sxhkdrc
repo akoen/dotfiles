@@ -88,9 +88,12 @@ super + ctrl + {m,x,y,z}
 # focus/swap
 #
 
-# focus the node in the given direction
-super + {_,shift + }{h,j,k,l}
-	bspc node -{f,s} {west,south,north,east}
+# focus the node in the given direction. Works with both bspwm-managed windows and emacs splits.
+super + {h,j,k,l}
+	seamless-move {west,south,north,east}
+
+super + shift + {h,j,k,l}
+	bspc node -s {west,south,north,east}
 
 # focus the node for the given path jump
 super + {p,b,comma,period}

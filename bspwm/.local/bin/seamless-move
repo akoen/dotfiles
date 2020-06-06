@@ -1,0 +1,23 @@
+#!/bin/bash
+
+if [[ $(xprop -id $(bspc query -N -n focused) | grep WM_CLASS | grep Emacs) ]]; then
+    case "$1" in
+        west)
+            DIRECTION=left;;
+        east)
+            DIRECTION=right;;
+        north)
+            DIRECTION=up;;
+        south)
+            DIRECTION=down;;
+    esac
+
+    emacsclient -e "(evil-window-$DIRECTION 1)"
+
+    if [[ $? == 1 ]]; then
+        echo "Error"
+        bspc node -f $1
+    fi
+else
+    bspc node -f $1
+fi
