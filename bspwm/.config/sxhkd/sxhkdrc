@@ -157,3 +157,8 @@ super + alt + shift + {h,j,k,l}
 # move a floating window
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# Resize window using super + middle mouse button
+super + button2
+    SIZE=$(slop -f 0,%x,%y,%w,%h); bspc node focused -t floating; wmctrl -r :ACTIVE: -e "$SIZE" 
+
