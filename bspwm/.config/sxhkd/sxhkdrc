@@ -2,21 +2,24 @@
 # wm independent hotkeys
 #
 
-# terminal emulator
-super + Return
-	urxvt
+# terminal emulator tiled or floating
+super + { ,shift} + Return
+    {$TERMINAL, bspc rule -a \* -o state=floating && $TERMINAL}      
 
 # program launcher
 super + space
-	rofi -show drun
+    rofi -combi-modi window,drun -show combi -modi combi
 
-# emacsclient
-super + e
-      emacs
+# Essential software
+super + {e,f}
+      {emacsclient -nc,$TERMINAL -e $FILE}
 
-# make sxhkd reload its configuration files:
-super + Escape
+super + shift + Escape
 	pkill -USR1 -x sxhkd
+
+# Lock the screen
+super + Escape
+      slock
 
 ###Volume
 ### Mute
@@ -78,8 +81,8 @@ super + r
 #
 
 # set the window state
-super + {t,shift + t,s,f}
-	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+super + {t,shift + t,s}
+	bspc node -t {tiled,pseudo_tiled,floating}
 
 # set the node flags
 super + ctrl + {m,x,y,z}
