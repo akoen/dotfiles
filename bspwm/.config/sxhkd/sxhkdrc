@@ -28,8 +28,9 @@ XF86Audio{Raise,Lower}Volume
     pulsemixer --change-volume {+,-}5
 
 # Screenshot
+# maim -u -m 5 -s /tmp/maim_clipboard  && xclip -selection clipboard -t image/png /tmp/maim_clipboard && rm /tmp/maim_clipboard;
 super + Print
-    maim -u -m 5 -s /tmp/maim_clipboard  && xclip -selection clipboard -t image/png /tmp/maim_clipboard && rm /tmp/maim_clipboard;
+    flameshot gui
  
 # BRIGHTNESS
  
