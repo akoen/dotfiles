@@ -3,6 +3,6 @@
 	name = akoen
 	email = arw.koen@gmail.com
 [credential]
-	helper = netrc -v -f ~/.local/share/password-store/github.gpg
+	helper = /usr/lib/git-core/git-credential-libsecret
 [github]
 	user = akoen
