@@ -1,3 +1,4 @@
+export FILE="nnn"
 # environment variables
 export DISPLAY=:0.0
 

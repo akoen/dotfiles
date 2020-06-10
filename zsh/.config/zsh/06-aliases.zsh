@@ -18,3 +18,4 @@ alias -g G='| grep' #now you can do: ls foo G something
 
 # Make xclip use the primary selection
 alias xclip="xclip -selection c"
+alias nnn='NNN_FIFO="$(mktemp -u)" nnn'
