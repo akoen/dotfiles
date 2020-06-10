@@ -14,12 +14,17 @@ super + space
 super + {e,f}
       {emacsclient -nc,$TERMINAL -e $FILE}
 
+# Other software
+super + x ; {m,c,b}
+      {evolution,gnome-calendar,firefox}
+
 super + shift + Escape
 	pkill -USR1 -x sxhkd
 
-# Lock the screen
-super + Escape
-      slock
+# power
+super + Escape ; {l,s}
+      {slock,systemctl suspend}
+
 
 ###Volume
 ### Mute
