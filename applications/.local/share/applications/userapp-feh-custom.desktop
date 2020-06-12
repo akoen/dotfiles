@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+NoDisplay=true
+Exec=feh -g 640x480 --scale-down --auto-rotate --start-at %f
+Name=feh
+Comment=Custom definition for feh
