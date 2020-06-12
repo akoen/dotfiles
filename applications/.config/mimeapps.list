@@ -18,24 +18,5 @@ video/mp4=mpv.desktop
 image/jpeg=userapp-feh-custom.desktop
 
 [Added Associations]
-application/x-theme=nvim.desktop;userapp-kitty-E56BL0.desktop;
-x-scheme-handler/http=firefox.desktop;
-x-scheme-handler/https=firefox.desktop;
-x-scheme-handler/ftp=firefox.desktop;
-x-scheme-handler/chrome=firefox.desktop;
-text/html=firefox.desktop;
-application/x-extension-htm=firefox.desktop;
-application/x-extension-html=firefox.desktop;
-application/x-extension-shtml=firefox.desktop;
-application/xhtml+xml=firefox.desktop;
-application/x-extension-xhtml=firefox.desktop;
-application/x-extension-xht=firefox.desktop;
-application/pdf=okularApplication_pdf.desktop;
-image/png=feh.desktop;
-text/plain=org.kde.kate.desktop;
-application/octet-stream=org.inkscape.Inkscape.desktop;
-x-scheme-handler/mailto=org.gnome.Geary.desktop;userapp-Evolution-SCW6L0.desktop;
-video/mp4=mpv.desktop;
-image/jpeg=userapp-feh-SF79L0.desktop;
 
 [Removed Associations]
