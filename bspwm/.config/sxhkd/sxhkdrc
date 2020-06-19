@@ -27,13 +27,17 @@ super + Escape ; {l,s}
 
 
 ###Volume
-### Mute
 XF86AudioMute
     pulsemixer --toggle-mute
  
-### Master Volume
 XF86Audio{Raise,Lower}Volume
     pulsemixer --change-volume {+,-}5
+
+XF86AudioPlay
+    playerctl play-pause
+
+XF86Audio{Next,Prev}
+    playerctl {next,previous}
 
 # Screenshot
 # maim -u -m 5 -s /tmp/maim_clipboard  && xclip -selection clipboard -t image/png /tmp/maim_clipboard && rm /tmp/maim_clipboard;
