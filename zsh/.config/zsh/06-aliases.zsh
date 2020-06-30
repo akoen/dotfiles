@@ -28,7 +28,7 @@ alias doom='emacs --with-profile doom'
 
 ## Photos
 alias image='feh -g 640x480 --scale-down --auto-rotate --start-at'
-alias elodie='~/Downloads/elodie/elodie.py'
+alias elodie='~/.local/bin/elodie/elodie.py'
 alias pi='elodie import --debug --destination="~/Pictures/Elodie"'
 alias ph+='exiftool -AllDates+=1'
 alias ph-='exiftool -AllDates-=1'
