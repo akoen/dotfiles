@@ -25,7 +25,6 @@ super + shift + Escape
 super + Escape ; {l,s}
       {slock,systemctl suspend}
 
-
 ###Volume
 XF86AudioMute
     pulsemixer --toggle-mute
@@ -171,6 +170,6 @@ super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
 # Resize window using super + middle mouse button
-super + button2
+super + button9
     SIZE=$(slop -f 0,%x,%y,%w,%h); bspc node focused -t floating; wmctrl -r :ACTIVE: -e "$SIZE" 
 
