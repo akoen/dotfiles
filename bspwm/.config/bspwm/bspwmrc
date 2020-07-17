@@ -45,12 +45,13 @@ flameshot &
 dunst &
 
 # Default workspace
-bspc rule -a firefox -o desktop=I && firefox -new-tab moz-extension://6a6f793c-08ee-49af-bc64-b4a0b352a519/index.html & # Start with new tab
+bspc rule -a firefox -o desktop=I && firefox &
+# bspc rule -a Emacs -o desktop=I && emacsclient -nc &
 
 bspc rule -a Tilix:tilix -o desktop=IX && tilix -e spt &
 
 sleep 20
 
-bspc rule -a Emacs -o desktop=X && emacsclient -nc --eval "(org-agenda-list)" &
-bspc rule -a Gnome-calendar -o desktop=X && gnome-calendar &
+bspc rule -a Emacs -o desktop=X && emacsclient -nc --eval '(progn (find-file (concat org-dir "refile.org"))(org-agenda-list))' &
+bspc rule -a MineTime -o desktop=X && minetime &
 bspc rule -a Geary -o desktop=X && geary &
