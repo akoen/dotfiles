@@ -10,14 +10,19 @@ super + { ,shift} + Return
 super + space
     rofi -combi-modi window,drun -show combi -modi combi
 
+# file search
+super + shift + space
+      rofi-files
+
 # Essential software
 super + {e,f}
       {emacsclient -nc,$TERMINAL -e $FILE}
 
 # Other software
-super + x ; {m,c,b}
-      {evolution,gnome-calendar,firefox}
+super + x ; {m,c,b,f}
+      {evolution,gnome-calendar,firefox,nemo}
 
+# Reload sxhkd
 super + shift + Escape
 	pkill -USR1 -x sxhkd
 
@@ -169,7 +174,7 @@ super + alt + shift + {h,j,k,l}
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
-# Resize window using super + middle mouse button
+# Resize window using super + side button
 super + button9
     SIZE=$(slop -f 0,%x,%y,%w,%h); bspc node focused -t floating; wmctrl -r :ACTIVE: -e "$SIZE" 
 
