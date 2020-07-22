@@ -18,6 +18,10 @@ super + shift + space
 super + {e,f}
       {emacsclient -nc,$TERMINAL -e $FILE}
 
+# System-wide org-capture at top-right of screen. Depends on emacs config.
+super + shift + e
+    bspc rule -a Emacs -o state=floating rectangle=600x300+9999+35 & emacsclient -c -F '(quote (name . "capture"))' -e '(my--activate-capture-frame)'
+
 # Other software
 super + x ; {m,c,b,f}
       {evolution,gnome-calendar,firefox,nemo}
