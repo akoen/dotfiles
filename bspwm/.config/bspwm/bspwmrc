@@ -1,7 +1,5 @@
 #! /bin/sh
 
-sxhkd &
-
 bspc monitor -d I II III IV V VI VII VIII IX X
 
 bspc config border_width        4
@@ -37,9 +35,13 @@ bspc rule -a Emacs state=tiled
 # Set wallpaper
 feh --bg-fill ~/.config/wall
 
-# Autostart
-killall -9 polybar redshift dunst
+# Set cursor to pointer instead of cross
+xsetroot -cusor_name left_ptr
 
+# Autostart
+killall -9 sxhkd polybar redshift dunst
+
+sxhkd &
 $HOME/.config/polybar/launch.sh
 redshift -l 49.1:-123.7 -t 5700:3000 &
 flameshot &
@@ -49,10 +51,11 @@ dunst &
 bspc rule -a firefox -o desktop=I && firefox &
 # bspc rule -a Emacs -o desktop=I && emacsclient -nc &
 
-bspc rule -a Tilix:tilix -o desktop=IX && tilix -e spt &
+bspc rule -a Tilix:tilix -o desktop=VIII && tilix -e spt &
 
 sleep 20
 
-bspc rule -a Emacs -o desktop=X && emacsclient -nc --eval '(progn (find-file (concat org-dir "refile.org"))(org-agenda-list))' &
+bspc rule -a Geary -o desktop=IX && geary &
+
+bspc rule -a Emacs -o desktop=X && emacsclient -nc --eval '(org-agenda nil "v")' &
 bspc rule -a MineTime -o desktop=X && minetime &
-bspc rule -a Geary -o desktop=X && geary &
