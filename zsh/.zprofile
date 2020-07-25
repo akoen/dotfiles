@@ -5,9 +5,6 @@ export FILE="nnn"
 export GUI_FILE="nemo"
 export TERMINAL="tilix"
 
-# environment variables
-export DISPLAY=:0.0
-
 # Cleanup
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
