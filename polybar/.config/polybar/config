@@ -12,7 +12,6 @@ module-margin-left = 1
 module-margin-right = 1
 
 modules-right = battery pulseaudio date powermenu 
-modules-center = spotify 
 modules-left = bspwm
 
 background = ${colors.background}
@@ -167,14 +166,6 @@ ramp-volume-0 = ""
 ramp-volume-1 = ""
 ramp-volume-2 = ""
 ramp-volume-foreground = ${colors.accent}
-
-[module/spotify]
-type = custom/script
-interval = 1
-format-prefix = " "
-format = <label>
-exec = python ~/.config/polybar/scripts/spotify-status.py -f '{artist}: {song}'
-format-underline = ${colors.accent}
 
 [settings]
 screenchange-reload = false
