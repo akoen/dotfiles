@@ -26,6 +26,10 @@ super + shift + e
 super + x ; {m,c,b,f}
       {evolution,gnome-calendar,firefox,nemo}
 
+# Speedcrunch popup window for math
+super + x ; s
+    bspc rule -a SpeedCrunch -o state=floating rectangle=600x300+9999+35 & speedcrunch
+
 # Reload sxhkd
 super + shift + Escape
 	pkill -USR1 -x sxhkd
