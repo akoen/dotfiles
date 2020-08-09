@@ -22,6 +22,10 @@ super + {e,f}
 super + shift + e
     bspc rule -a Emacs -o state=floating rectangle=600x300+9999+35 & emacsclient -c -F '(quote (name . "capture"))' -e '(my--activate-capture-frame)'
 
+# Doom emacs
+super + ctrl + e
+      emacs --with-profile doom
+
 # Other software
 super + x ; {m,c,b,f}
       {evolution,gnome-calendar,firefox,nemo}
