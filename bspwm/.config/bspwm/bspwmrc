@@ -47,13 +47,22 @@ redshift -l 49.1:-123.7 -t 5700:3000 &
 flameshot &
 dunst &
 
+killall -9 firefox tilix geary emacs minetime spotify
 # Default workspace
 bspc rule -a firefox -o desktop=I && firefox &
 # bspc rule -a Emacs -o desktop=I && emacsclient -nc &
 
-bspc rule -a Tilix:tilix -o desktop=VIII && tilix -e spt &
-
 sleep 20
+
+# Spotify-tui is currently broken when resuming. If it weren't...
+# bspc rule -a Tilix:tilix -o desktop=VIII && tilix -e spt &
+
+# Spotify sets in class name too late so bspc rules don't work. Here
+# is a workaround from
+# https://www.reddit.com/r/bspwm/comments/564wwy/spotify_has_empty_wm_class/
+spotify &
+sleep 1
+wmctrl -r Spotify -x -t 7 # 7 is desktop 8
 
 bspc rule -a Geary -o desktop=IX && geary &
 
