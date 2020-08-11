@@ -1,5 +1,11 @@
 ! HiDPI
-Xft.dpi: 120
+! TODO Verify that this works
+#ifdef SRVR_falcon
+    Xft.dpi: 196
+#else
+    Xft.dpi: 120
+#endif
+
 Xft.autohint: false
 Xft.lcdfilter:  lcddefault
 Xft.hintstyle:  hintslight
