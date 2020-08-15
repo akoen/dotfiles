@@ -43,4 +43,6 @@ export TEXMFHOME=$HOME/.texmf
 # nnn
 export NNN_PLUG='p:preview-tabbed'
 
-exec startx -- -dpi 144
+if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
+    exec startx -- -dpi 144
+fi
