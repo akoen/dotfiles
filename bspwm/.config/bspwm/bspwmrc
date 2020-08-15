@@ -60,7 +60,7 @@ sleep 20
 # Spotify sets in class name too late so bspc rules don't work. Here
 # is a workaround from
 # https://www.reddit.com/r/bspwm/comments/564wwy/spotify_has_empty_wm_class/
-spotify --force-device-scale=2 &
+spotify --force-device-scale-factor=2 &
 sleep 1
 wmctrl -r Spotify -x -t 7 # 7 is desktop 8
 
