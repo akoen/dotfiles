@@ -1,62 +1,21 @@
-IMAPAccount gmail
-Host imap.gmail.com
-User arw.koen
-PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.mbsyncpass.gpg"
-Port 993
-AuthMechs LOGIN
-SSLType IMAPS
-CertificateFile /etc/ssl/certs/ca-certificates.crt
+# Base on https://webgefrickel.de/blog/a-modern-mutt-setup and
+# https://gist.github.com/agraul/60977cc497c3aec44e10591f94f49ef0
+IMAPStore mailbox-remote
+Host imap.mailbox.org
+User alex@koen.ca
+PassCmd "gpg2 --quiet --for-your-eyes-only --no-tty --decrypt ~/.local/share/password-store/alex@koen.ca.gpg"
+SSLType STARTTLS
 
-##
-# Remote
-IMAPStore gmail-remote
-Account gmail
+# Local storage
+MaildirStore mailbox-local
+Path ~/.mail/
+Inbox ~/.mail/Inbox
+SubFolders Verbatim
 
-# Local
-MaildirStore gmail-local
-Path ~/.mail/gmail/
-Inbox ~/.mail/gmail/Inbox
-
-# Connections
-Channel gmail-all
-Master :gmail-remote:"[Gmail]/All Mail"
-Slave :gmail-local:"All Mail"
-Create Slave
+Channel mailbox
+Master :mailbox-remote:
+Slave :mailbox-local:
+Patterns *
+Create Both
 Expunge Both
 SyncState *
-
-Channel gmail-inbox
-Master :gmail-remote:"INBOX"
-Slave :gmail-local:"Inbox"
-Create Slave
-Expunge Both
-SyncState *
-
-Channel gmail-drafts
-Master :gmail-remote:"[Gmail]/Drafts"
-Slave :gmail-local:"Drafts"
-Create Slave
-Expunge Both
-SyncState *
-
-Channel gmail-sent
-Master :gmail-remote:"[Gmail]/Sent Mail"
-Slave :gmail-local:"Sent Mail"
-Create Slave
-Expunge Both
-SyncState *
-
-Channel gmail-trash
-Master :gmail-remote:"[Gmail]/Trash"
-Slave :gmail-local:"Trash"
-Create Slave
-Expunge Both
-SyncState *
-
-## Groups
-Group gmail
-Channel gmail-all
-Channel gmail-inbox
-Channel gmail-drafts
-Channel gmail-sent
-Channel gmail-trash
