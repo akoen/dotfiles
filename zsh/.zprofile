@@ -7,9 +7,12 @@ export TERMINAL="tilix"
 
 # Display scaling
 # From https://forum.archlabslinux.com/t/solved-4k-monitor-dpi-scaling/3191/7
-export GDK_SCALE=2			# UI scale
-export GDK_DPI_SCALE=0.5		# Text scale
-export QT_AUTO_SCREEN_SCALE_FACTOR=1  # can cause issues with text size
+
+if [ $(hostname) = falcon ]; then
+    export GDK_SCALE=2			# UI scale
+    export GDK_DPI_SCALE=0.5		# Text scale
+    export QT_AUTO_SCREEN_SCALE_FACTOR=1  # can cause issues with text size
+fi
 
 # Cleanup
 export XDG_CONFIG_HOME="$HOME/.config"
