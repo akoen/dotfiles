@@ -52,7 +52,8 @@ killall -9 firefox tilix geary emacs minetime spotify
 bspc rule -a firefox -o desktop=I && firefox &
 # bspc rule -a Emacs -o desktop=I && emacsclient -nc &
 
-sleep 20
+# Emacs needs a few seconds to start
+sleep 5
 
 # Spotify-tui is currently broken when resuming. If it weren't...
 # bspc rule -a Tilix:tilix -o desktop=VIII && tilix -e spt &
