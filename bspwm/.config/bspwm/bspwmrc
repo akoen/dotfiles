@@ -39,15 +39,16 @@ feh --bg-fill ~/.config/wall
 xsetroot -cusor_name left_ptr
 
 # Autostart
-killall -9 sxhkd polybar redshift dunst
+killall sxhkd polybar redshift dunst pcloud
 
 sxhkd &
 $HOME/.config/polybar/launch.sh
 redshift -l 49.1:-123.7 -t 5700:3000 &
 flameshot &
 dunst &
+pcloud &
 
-killall -9 firefox tilix geary emacs minetime spotify
+killall firefox tilix geary emacs minetime spotify
 # Default workspace
 bspc rule -a firefox -o desktop=I && firefox &
 # bspc rule -a Emacs -o desktop=I && emacsclient -nc &
@@ -69,4 +70,4 @@ wmctrl -r Spotify -x -t 8 # 7 is desktop 8
 bspc rule -a Emacs -o desktop=X && emacsclient -nc --eval '(org-agenda nil "a")' &
 bspc rule -a MineTime -o desktop=X && minetime &
 # WM_CLASS name is different at launch. See https://github.com/baskerville/bspwm/issues/655#issuecomment-323665841
-bspc rule -a Soffice -o desktop=X && libreoffice ~/Documents/Areas/goals.ods
+bspc rule -a Soffice -o desktop=X && libreoffice ~/Documents/Areas/goals.ods &
