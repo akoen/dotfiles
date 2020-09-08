@@ -2,11 +2,8 @@ include-file = /home/$USER/.config/polybar/colors
 
 [bar/main]
 enable-ipc = true
-width = 100%
-; dpi = ${xrdb:Xft.dpi:-1}
-dpi = 144
-; height = 35 ;; Desktop
-height = 50
+dpi = ${xrdb:Xft.dpi:-1}
+height = 40 ;; Desktop
 fixed-center = true
 
 padding = 2
