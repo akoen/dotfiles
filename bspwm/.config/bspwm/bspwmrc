@@ -69,5 +69,4 @@ wmctrl -r Spotify -x -t 8 # 7 is desktop 8
 
 bspc rule -a Emacs -o desktop=X && emacsclient -nc --eval '(org-agenda nil "a")' &
 bspc rule -a MineTime -o desktop=X && minetime &
-# WM_CLASS name is different at launch. See https://github.com/baskerville/bspwm/issues/655#issuecomment-323665841
-bspc rule -a Soffice -o desktop=X && libreoffice ~/Documents/Areas/goals.ods &
+bspc rule -a DesktopEditors -o desktop=X && desktopeditors ~/Documents/Areas/goals.ods &
