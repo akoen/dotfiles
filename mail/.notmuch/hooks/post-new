@@ -1,0 +1,60 @@
+#  -*- mode: sh -*-
+
+notmuch tag +sent -- from:alex@koen.ca and not tag:sent
+notmuch tag +sent -- from:akoen@mailbox.ca and not tag:sent
+
+notmuch tag +anon -- body:AnonAddy
+
+
+echo "starting NM post-new script"
+# NOTE: You will need to define your maildir here!
+export nm_maildir="$HOME"
+export start="-1"
+
+function timer_start {
+    echo -n "    starting $1"
+    export start=$(date +"%s")
+}
+
+function timer_end {
+    end=$(date +"%s")
+    delta=$(($end-$start))
+    mins=$(($delta / 60))
+    secs=$(($delta - ($mins*60)))
+    echo " -- $1 completed: ${mins} minutes, ${secs} seconds"
+    export start="-1" # sanity requires this or similar
+}
+
+timer_start "ledger"
+for entry in $(cat $nm_maildir/.notmuch/hooks/ledger.db); do
+    if [ -n "$entry" ]; then
+	notmuch tag +archived +ledger -inbox -- tag:inbox and tag:unread and from:"$entry"
+    fi
+done
+timer_end "ledger"
+
+timer_start "unsubscribable_spam"
+for entry in $(cat $nm_maildir/.notmuch/hooks/spam.db); do
+    if [ -n "$entry" ]; then
+	notmuch tag +spam +deleted +archived -inbox -unread -- tag:inbox and tag:unread and from:"$entry"
+    fi
+done
+timer_end "unsubscribable_spam"
+
+timer_start "thefeed"
+for entry in $(cat $nm_maildir/.notmuch/hooks/thefeed.db); do
+    if [ -n "$entry" ]; then
+	notmuch tag +thefeed +archived -inbox -- tag:inbox and tag:unread and from:"$entry"
+    fi
+done
+timer_end "thefeed"
+
+timer_start "Screened"
+for entry in $(cat $nm_maildir/.notmuch/hooks/screened.db); do
+    if [ -n "$entry" ]; then
+	notmuch tag +screened -- tag:inbox and tag:unread and from:"$entry"
+    fi
+done
+timer_end "Screened"
+
+echo "Completing NM post-new script"
