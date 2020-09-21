@@ -36,7 +36,7 @@ bspc rule -a Emacs state=tiled
 feh --bg-fill ~/.config/wall
 
 # Set cursor to pointer instead of cross
-xsetroot -cusor_name left_ptr
+xsetroot -cursor_name left_ptr
 
 # Autostart
 killall sxhkd polybar redshift dunst pcloud
