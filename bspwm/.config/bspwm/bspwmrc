@@ -1,6 +1,12 @@
 #! /bin/sh
 
-bspc monitor -d I II III IV V VI VII VIII IX X
+
+if [ $(hostname) = egret ]; then
+    bspc monitor HDMI-1 -d I II III IV V VI VII VIII
+    bspc monitor DVI-I-1 -d IX X
+else
+    bspc monitor -d I II III IV V VI VII VIII IX X
+fi
 
 bspc config border_width        4
 bspc config window_gap          8
@@ -65,8 +71,10 @@ sleep 5
 # spotify --force-device-scale-factor=2 &
 spotify &
 sleep 1
-wmctrl -r Spotify -x -t 8 # 7 is desktop 8
+wmctrl -r Spotify -x -t 7 # 7 is desktop 8
 
 bspc rule -a Emacs -o desktop=X && emacsclient -nc --eval '(org-agenda nil "a")' &
 bspc rule -a MineTime -o desktop=X && minetime &
 bspc rule -a DesktopEditors -o desktop=X && desktopeditors ~/Documents/Areas/goals.ods &
+bspc desktop -f ^10
+bspc desktop -f ^1

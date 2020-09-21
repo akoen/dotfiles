@@ -1,6 +1,7 @@
 include-file = /home/$USER/.config/polybar/colors
 
 [bar/main]
+monitor = HDMI-1
 enable-ipc = true
 dpi = ${xrdb:Xft.dpi:-1}
 height = 40 ;; Desktop
