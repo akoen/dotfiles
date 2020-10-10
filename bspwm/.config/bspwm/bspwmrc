@@ -76,6 +76,5 @@ wmctrl -r Spotify -x -t 7 # 7 is desktop 8
 
 bspc rule -a Emacs -o desktop=X && emacsclient -nc --eval '(org-agenda nil "a")' &
 bspc rule -a MineTime -o desktop=X && minetime &
-bspc rule -a DesktopEditors -o desktop=X && desktopeditors ~/Documents/Areas/goals.ods &
 bspc desktop -f ^10
 bspc desktop -f ^1
