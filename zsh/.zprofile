@@ -43,12 +43,19 @@ export MAKEFLAGS="-j$(nproc)"
 
 # Python
 export PATH=$PATH:~/.local/bin
+eval "$(pyenv init -)"
 
 # LaTeX
 export TEXMFHOME=$HOME/.texmf
 
 # nnn
 export NNN_PLUG='p:preview-tabbed'
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/shims:$PATH"
+export PYENV_SHELL=zsh
+export PIPENV_PYTHON="$PYENV_ROOT/shims/python"
 
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
     exec startx -- -dpi 144
