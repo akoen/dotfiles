@@ -49,7 +49,7 @@ killall sxhkd polybar redshift dunst pcloud copyq
 
 sxhkd &
 $HOME/.config/polybar/launch.sh
-redshift -l 49.1:-123.7 -t 5700:3000 &
+redshift-gtk -l 49.1:-123.7 -t 6000:2700 &
 flameshot &
 dunst &
 pcloud &
