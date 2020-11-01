@@ -15,7 +15,7 @@ fi
 
 # Multi-monitor setup
 if [ $(hostname) = egret ]; then
-    xrandr --output DVI-I-1 --auto --output HDMI-1 --auto --left-of DVI-I-1
+    xrandr --output DP-2 --auto --output HDMI-1 --auto --right-of DP-2
 fi
 
 # Cleanup

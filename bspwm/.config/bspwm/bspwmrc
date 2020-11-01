@@ -2,8 +2,8 @@
 
 
 if [ $(hostname) = egret ]; then
-    bspc monitor HDMI-1 -d I II III IV V VI VII VIII
-    bspc monitor DVI-I-1 -d IX X
+    bspc monitor DP-2 -d I II III IV V VI VII VIII
+    bspc monitor HDMI-1 -d IX X
 else
     bspc monitor -d I II III IV V VI VII VIII IX X
 fi
