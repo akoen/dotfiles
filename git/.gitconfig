@@ -6,3 +6,5 @@
 	helper = /usr/lib/git-core/git-credential-libsecret
 [github]
 	user = akoen
+[core]
+	excludesfile = /home/alex/.gitignore
