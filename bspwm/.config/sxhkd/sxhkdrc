@@ -16,23 +16,29 @@ super + shift + space
       rofi-files
 
 # Essential software
-super + {e,f}
-      {emacsclient -nc,$TERMINAL -e $FILE}
+super + e
+      emacsclient -nc
+
+super + f
+      dired
+
+# Emacs (not client)
+super + shift + e
+    emacs
+# Doom emacs
+super + ctrl + e
+    emacs --with-profile doom
 
 # System-wide org-capture and agenda at top-right of screen. Depends on emacs config.
 super + c
     bspc rule -a Emacs -o state=floating rectangle=600x300+9999+35 & emacsclient -c -F '(quote (name . "capture"))' -e '(my--activate-capture-frame)'
 
-super + a
+super + a ; a
     bspc rule -a Emacs -o state=floating rectangle=1200x400+9999+35 & emacsclient -c -F '(quote (name . "agenda"))' -e '(org-agenda nil "t")'
 
-# Doom emacs
-super + ctrl + e
-      emacs --with-profile doom
-
 # Other software
-super + x ; {m,c,b,f}
-      {evolution,gnome-calendar,firefox,nemo}
+super + x ; b
+      firefox
 
 # Speedcrunch popup window for math
 super + x ; s
