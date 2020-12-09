@@ -69,9 +69,14 @@ super + Print
 # Brightness goes up
 XF86MonBrightnessUp
     light -A 5;
+super + Up
+    ddcutil setvcp 10 + 5
+
 # Brightness goes down
 XF86MonBrightnessDown
     light -U 5;
+super + Down
+    ddcutil setvcp 10 - 5
 
 #
 # bspwm hotkeys
