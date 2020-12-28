@@ -1,9 +1,8 @@
 #! /bin/sh
 
-
 if [ $(hostname) = egret ]; then
-    bspc monitor DP-2 -d I II III IV V VI VII VIII
-    bspc monitor HDMI-1 -d IX X
+    bspc monitor DisplayPort-1 -d I II III IV V VI VII VIII
+    bspc monitor HDMI-A-0 -d IX X
 else
     bspc monitor -d I II III IV V VI VII VIII IX X
 fi
@@ -22,11 +21,6 @@ bspc config left_padding 0
 bspc config right_padding 0
 
 bspc config ignore_ewmh_focus   true # Do not follow opened windows when requested
-
-# xrdb
-function get_xrdb() {
-  xrdb -query | grep "$1" | awk '{print $2}' | tail -n1
-}
 
 bspc config normal_border_color "$(get_xrdb background)"
 bspc config focused_border_color "$(get_xrdb color4)"

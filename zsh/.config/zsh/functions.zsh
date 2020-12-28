@@ -14,3 +14,7 @@ cmath(){
     xclip -o | sed 's/<math>/ \\(/g;  s/<\/math>/\\) /g' | xclip -i
     xclip -o | sed 's/\$/\\(/; s/\$/\\)/' | xclip -i
 }
+
+function get_xrdb() {
+  xrdb -query | grep "$1" | awk '{print $2}' | tail -n1
+}
