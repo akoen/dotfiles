@@ -4,3 +4,6 @@
 .cache/
 .cmake/
 .project
+.idea/
+.sync/
+\#*\#

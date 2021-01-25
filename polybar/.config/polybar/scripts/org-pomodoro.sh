@@ -3,7 +3,6 @@
 ### Modify these variables to configure the script's behaviour
 
 # The file where to currently used output style is saved
-# NOTE: You must touch this file for full output to work.
 OUTPUT_STYLE_FILE="/tmp/pomodoro-polybar-output-style"
 # How to call your emacsclient
 EMACSCLIENT="emacsclient"
