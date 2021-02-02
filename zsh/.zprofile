@@ -1,6 +1,6 @@
 # ~/.zprofile - for setting commands and variables that do not need to be changed often. Read at login. Changes will require a session restart.
 
-export EDITOR="nvim"
+export EDITOR="emacsclient -c"
 export FILE="nnn"
 export GUI_FILE="nemo"
 export TERMINAL="tilix"
