@@ -1,10 +1,5 @@
 # Use emacs keybdings
-bindkey -e
-
-# Set shift to capslock system-wide
-setxkbmap -option "caps:ctrl_modifier"
-setxkbmap -option "shift:both_capslock"
-xcape -e "Caps_Lock=Escape"
+bindkey -v
 
 # press Ctrl-z to return to vim
 fancy-ctrl-z () {
