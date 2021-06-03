@@ -32,8 +32,8 @@ bspc rule -a feh state=floating border=off
 bspc rule -a tabbed state=floating border=off
 bspc rule -a Emacs state=tiled
 
-# Set wallpaper
-feh --bg-fill ~/.config/wall
+# Set wallpaper randomly
+feh --bg-fill $(find ~/Pictures/Wallpapers/**/*.{png,jpg,jpeg} | shuf -n 1)
 
 # Set cursor to pointer instead of cross
 xsetroot -cursor_name left_ptr
