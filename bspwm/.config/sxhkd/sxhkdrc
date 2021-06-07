@@ -1,5 +1,3 @@
-# -*- mode: sh; -*-#
-
 # wm independent hotkeys
 #
 
@@ -43,6 +41,10 @@ super + x ; b
 # Speedcrunch popup window for math
 super + x ; s
     bspc rule -a SpeedCrunch -o state=floating rectangle=600x300+9999+35 & speedcrunch
+
+super + equal
+	{polybar-msg cmd hide && bspc config top_padding 0, polybar-msg cmd show}
+
 
 # Reload sxhkd
 super + shift + Escape
