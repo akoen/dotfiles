@@ -72,12 +72,6 @@ Xft.rgba: rgb
 *.color15: COLOR15
 
 ! Applications
-
-rofi.color-enabled: true
-rofi.color-window: BACKGROUND, BACKGROUND, BACKGROUND
-rofi.color-normal: BACKGROUND, FOREGROUND, BACKGROUND, BACKGROUND, COLOR1
-rofi.color-active: BACKGROUND, FOREGROUND, BACKGROUND, BACKGROUND, COLOR1
-rofi.color-urgent: BACKGROUND, FOREGROUND, BACKGROUND, BACKGROUND, COLOR1
  
 URxvt*scrollBar: false
 URxvt*transparent: false
