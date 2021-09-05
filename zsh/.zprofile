@@ -46,6 +46,10 @@ export MAKEFLAGS="-j$(nproc)"
 
 # Python
 export PATH=$PATH:~/.local/bin
+# Pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
 
 # LaTeX
 export TEXMFHOME=$HOME/.texmf
