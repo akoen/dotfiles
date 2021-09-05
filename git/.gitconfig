@@ -8,3 +8,4 @@
 	user = akoen
 [core]
 	excludesfile = /home/alex/.gitignore
+	autocrlf = input
