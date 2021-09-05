@@ -19,16 +19,18 @@ set $term tilix
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu rofi -show combi | xargs swaymsg exec --
+set $menu wofi --show drun | xargs swaymsg exec --
 # set $menu dmenu_path | dmenu | xars swaymsg exec --
 
-set $mouse_warping none
-set $default_border pixel 2
+mouse_warping none
+focus_follows_mouse no
+default_border pixel 5
 
 ### Output configuration
 #
-# Default wallpaper (more resolutions are availab
-output * bg ~/.config/wall fill
+set $wallpapers_path $HOME/Pictures/Wallpapers
+output * bg `find $wallpapers_path -type f | shuf -n 1` fill
+# output * bg ~/.config/wall fill
 #
 # Example configuration:
 #
@@ -37,6 +39,23 @@ output * bg ~/.config/wall fill
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 output DP-2 pos 0 0
 output HDMI-A-1 pos 2560 0
+
+workspace 10
+exec ferdi
+exec emacsclient -c
+
+exec emacsclient -nc --eval '(org-agenda nil "g")'
+exec minetime
+
+workspace 8
+exec spotify
+
+workspace 1
+
+gaps inner 12
+
+# See http://wiki.compiz.org/WindowMatching/
+no_focus [class="MATLAB"]
 
 ### Idle configuration
 #
@@ -89,6 +108,17 @@ bindsym $mod+tab exec emacsclient -c
 bindsym $mod+shift+tab exec emacs
 
 bindsym $mod+Control+v exec clipman pick -t rofi
+
+# Power
+bindsym $mod+Control+s exec systemctl suspend
+
+
+bindsym XF86AudioRaiseVolume exec pulsemixer --change-volume +5
+bindsym XF86AudioLowerVolume exec pulsemixer --change-volume -5
+bindsym XF86AudioMute exec pulsemixer --toggle-mute
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
 
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
@@ -194,9 +224,7 @@ bindsym $mod+f fullscreen
 # Toggle the current focus between tiling and floating mode
 bindsym $mod+Shift+space floating toggle
 
-for_window [class=".*"] split toggle
-for_window [app_id=".*"] split toggle
-default_orientation vertical
+default_orientation horizontal
 
 # Swap focus between the tiling area and the floating area
 # bindsym $mod+space focus mode_toggle
