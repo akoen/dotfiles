@@ -71,7 +71,7 @@ print_pomodoro_state_long() {
         set_remaining_time
         echo -e "$ICON +$TIME_REMAINING"
     else # Org-pomodoro not running, nothing else to print
-        echo -e "$ICON"
+        echo -e "$ICON The days are long, but the decades are short"
     fi
     exit
 }
@@ -79,15 +79,15 @@ print_pomodoro_state_long() {
 print_pomodoro_state_full() {
     set_state
     set_pomodoro_icon
-    if [ $STATE = ":pomodoro" ]; then
+    if [[ $STATE == ":pomodoro" ]]; then
         set_remaining_time
         set_task_at_hand
         echo -e "$ICON $TIME_REMAINING $TASK_AT_HAND"
-    elif [ $STATE = ":overtime" ]; then
+    elif [[ $STATE == ":overtime" ]]; then
         set_remaining_time
         set_task_at_hand
         echo -e "$ICON +$TIME_REMAINING $TASK_AT_HAND"
-    elif [ $STATE = ":short-break" -o $STATE = ":long-break" ]; then #No current task to print
+    elif [[ $STATE == ":short-break" || $STATE == ":long-break" ]]; then #No current task to print
         set_remaining_time
         echo -e "$ICON $TIME_REMAINING"
     else # Org-pomodoro not running, nothing else to print
