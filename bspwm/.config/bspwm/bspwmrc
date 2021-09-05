@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /bin/zsh
 
 if [ $(hostname) = egret ]; then
     bspc monitor DisplayPort-1 -d I II III IV V VI VII VIII
@@ -20,28 +20,28 @@ bspc config bottom_padding 0
 bspc config left_padding 0
 bspc config right_padding 0
 
-bspc config ignore_ewmh_focus   true # Do not follow opened windows when requested
+ # Do not follow opened windows when requested
+bspc config ignore_ewmh_focus   true
+
 # Smooth movement of floating windows
 bspc config pointer_motion_interval 1
 
 bspc config normal_border_color "$(get_xrdb background)"
-bspc config focused_border_color "$(get_xrdb color4)"
+bspc config focused_border_color "$(get_xrdb color3)"
 
 bspc rule -a Pavucontrol state=floating
 bspc rule -a Zathura state=tiled
-bspc rule -a firefox border=off
 bspc rule -a feh state=floating border=off
-bspc rule -a tabbed state=floating border=off
 bspc rule -a Emacs state=tiled
 
 # Set wallpaper randomly
-feh --bg-fill $(find ~/Pictures/Wallpapers/**/*.{png,jpg,jpeg} | shuf -n 1)
+feh --bg-fill $(find ~/Pictures/Wallpapers/**/*.{png,jpg,jpeg} | shuf -n 1) $
 
 # Set cursor to pointer instead of cross
 xsetroot -cursor_name left_ptr
 
 # Autostart
-killall sxhkd polybar redshift dunst pcloud copyq
+killall sxhkd polybar redshift dunst pcloud copyq picom nextcloud
 
 sxhkd &
 $HOME/.config/polybar/launch.sh
@@ -49,7 +49,11 @@ redshift-gtk -l 49.1:-123.7 -t 6000:2700 &
 flameshot &
 dunst &
 pcloud &
+kdeconnect-indicator &
 copyq &
+picom --experimental-backends &
+nextcloud &
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
 killall firefox tilix geary emacs minetime spotify
 # Default workspace
@@ -62,15 +66,19 @@ sleep 5
 # Spotify-tui is currently broken when resuming. If it weren't...
 # bspc rule -a Tilix:tilix -o desktop=VIII && tilix -e spt &
 
-# Spotify sets in class name too late so bspc rules don't work. Here
+# Spotify sets its class name too late so bspc rules don't work. Here
 # is a workaround from
 # https://www.reddit.com/r/bspwm/comments/564wwy/spotify_has_empty_wm_class/
 # spotify --force-device-scale-factor=2 &
-spotify &
+flatpak run com.spotify.Client &
 sleep 1
-wmctrl -r Spotify -x -t 7 # 7 is desktop 8
+wmctrl -r spotify -x -t 7 # 7 is desktop 8
+# bspc rule -a Tilix -o desktop=VIII && tilix -e ncspot &
 
-bspc rule -a Emacs -o desktop=X && emacsclient -nc --eval '(org-agenda nil "a")' &
+bspc rule -a Emacs -o desktop=X && emacsclient -nc --eval '(org-agenda nil "g")' &
 bspc rule -a MineTime -o desktop=X && minetime &
+bspc rule -a Ferdi -o desktop=X && ferdi &
+bspc node @X:/ -R 180
+
 bspc desktop -f ^10
 bspc desktop -f ^1
