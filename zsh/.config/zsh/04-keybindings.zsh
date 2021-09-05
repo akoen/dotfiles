@@ -1,5 +1,5 @@
 # Use emacs keybdings
-bindkey -v
+bindkey -e
 
 # press Ctrl-z to return to vim
 fancy-ctrl-z () {
