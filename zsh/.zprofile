@@ -1,9 +1,13 @@
 # ~/.zprofile - for setting commands and variables that do not need to be changed often. Read at login. Changes will require a session restart.
 
-export EDITOR="emacsclient -c"
+export EDITOR="emacsclient -nc"
 export FILE="nnn"
 export GUI_FILE="nemo"
-export TERMINAL="tilix"
+export TERMINAL="alacritty"
+
+# Wayland and sway
+# export MOZ_ENABLE_WAYLAND=1
+# export XDG_CURRENT_DESKTOP=sway
 
 # Display scaling
 # From https://forum.archlabslinux.com/t/solved-4k-monitor-dpi-scaling/3191/7
