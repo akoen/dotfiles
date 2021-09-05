@@ -19,6 +19,9 @@ o() {
     xdg-open "$1" &|
 }
 
+# Search for pkg in arch repositories and install it interactively.
+alias pkgs="pacman -Slq | fzf --multi --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S"
+
 # Make xclip use the primary selection
 alias xclip="xclip -selection c"
 
