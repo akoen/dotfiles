@@ -13,9 +13,10 @@ Inbox ~/.mail/Inbox
 SubFolders Verbatim
 
 Channel mailbox
-Master :mailbox-remote:
-Slave :mailbox-local:
+Far :mailbox-remote:
+Near :mailbox-local:
 Patterns *
-Create Both
+Create Near
+Sync All
 Expunge Both
 SyncState *
