@@ -1,7 +1,7 @@
 include-file = /home/$USER/.config/polybar/colors
 
 [bar/main]
-monitor = DisplayPort-1
+;; Explicitly do not set monitor = so that config works across machines
 enable-ipc = true
 dpi = ${xrdb:Xft.dpi:-1}
 height = 40 ;; Desktop
