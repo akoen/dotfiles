@@ -7,6 +7,13 @@ else
     bspc monitor -d I II III IV V VI VII VIII IX X
 fi
 
+# TODO: Duplicate with .zshrc
+# This function must be defined before .zshrc because bspwmrc is called by
+# .xinitrc
+function get_xrdb() {
+  xrdb -query | grep "$1" | awk '{print $2}' | tail -n1
+}
+
 bspc config border_width        4
 bspc config window_gap          8
 
