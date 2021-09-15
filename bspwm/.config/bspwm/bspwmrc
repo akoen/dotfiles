@@ -78,12 +78,12 @@ sleep 5
 # https://www.reddit.com/r/bspwm/comments/564wwy/spotify_has_empty_wm_class/
 # spotify --force-device-scale-factor=2 &
 flatpak run com.spotify.Client &
-sleep 1
+sleep 2
 wmctrl -r spotify -x -t 7 # 7 is desktop 8
 # bspc rule -a Tilix -o desktop=VIII && tilix -e ncspot &
 
 bspc rule -a Emacs -o desktop=X && emacsclient -nc --eval '(org-agenda nil "g")' &
-bspc rule -a gnome-calendar -o desktop=X && gnome-calendar &
+bspc rule -a Gnome-calendar -o desktop=X && gnome-calendar &
 bspc rule -a Ferdi -o desktop=X && ferdi &
 bspc node @X:/ -R 180
 
