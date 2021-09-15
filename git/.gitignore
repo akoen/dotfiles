@@ -7,3 +7,5 @@
 .idea/
 .sync/
 \#*\#
+.vscode/
+.envrc
