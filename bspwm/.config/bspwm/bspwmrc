@@ -57,6 +57,7 @@ flameshot &
 dunst &
 pcloud &
 kdeconnect-indicator &
+nm-applet &
 copyq &
 picom --experimental-backends &
 nextcloud &
