@@ -1,8 +1,6 @@
 # Use emacs keybdings
 bindkey -e
 
-kmonad ~/.config/kmonad/config.kbd &|
-
 # press Ctrl-z to return to vim
 fancy-ctrl-z () {
   if [[ $#BUFFER -eq 0 ]]; then
