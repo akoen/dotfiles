@@ -22,9 +22,6 @@ if [ $(hostname) = egret ]; then
     # xrandr --output DP-2 --auto --output HDMI-1 --auto --right-of DP-2
 fi
 
-# SSH
-export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
-
 # Cleanup
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
@@ -64,6 +61,11 @@ export NNN_PLUG='p:preview-tabbed'
 # npm
 export PATH="$HOME/.node_modules/bin:$PATH"
 export npm_config_prefix=~/.node_modules
+
+if [ -n "$DESKTOP_SESSION" ];then
+    eval $(gnome-keyring-daemon --start)
+    export SSH_AUTH_SOCK
+fi
 
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
     # exec startx -- -dpi 144
