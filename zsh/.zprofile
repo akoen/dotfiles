@@ -68,5 +68,5 @@ if [ -n "$DESKTOP_SESSION" ];then
 fi
 
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
-    # exec startx -- -dpi 144
+    exec startx -- -dpi 144
 fi
