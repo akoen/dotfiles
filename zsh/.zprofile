@@ -59,13 +59,7 @@ export TEXMFHOME=$HOME/.texmf
 export NNN_PLUG='p:preview-tabbed'
 
 # npm
-export PATH="$HOME/.node_modules/bin:$PATH"
-export npm_config_prefix=~/.node_modules
-
-if [ -n "$DESKTOP_SESSION" ];then
-    eval $(gnome-keyring-daemon --start)
-    export SSH_AUTH_SOCK
-fi
+export npm_config_prefix="$HOME/.local"
 
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
     exec startx -- -dpi 144

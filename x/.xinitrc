@@ -8,6 +8,9 @@ xcape -e "Caps_Lock=Escape"
 #https://github.com/flatpak/xdg-desktop-portal-gtk/issues/72
 dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 
+eval $(gnome-keyring-daemon --start)
+export SSH_AUTH_SOCK
+
 exec bspwm
 # exec xmonad
 # exec sway
