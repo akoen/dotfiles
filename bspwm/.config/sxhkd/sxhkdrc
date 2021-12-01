@@ -32,6 +32,9 @@ super + shift + Tab
 # Doom emacs
 super + ctrl + Tab
     emacs --with-profile doom
+# Recover emacs
+super + ctrl +shift + Tab
+    pkill -SIGUSR2 emacs
 
 # System-wide org-capture and agenda at top-right of screen. Depends on emacs config.
 super + c
