@@ -9,6 +9,16 @@ eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 
 # Required for Flatpak to fix delay in gnome applications starting
 #https://github.com/flatpak/xdg-desktop-portal-gtk/issues/72
+# dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
+
+# /etc/X11/xinit/xinitrc.d/50-systemd-user.sh
+if [ -d /etc/X11/xinit/xinitrc.d ] ; then
+ for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
+  [ -x "$f" ] && . "$f"
+ done
+ unset f
+fi
+
 dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 
 exec bspwm

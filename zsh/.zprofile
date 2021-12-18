@@ -17,6 +17,8 @@ if [ $(hostname) = falcon ]; then
     export QT_AUTO_SCREEN_SCALE_FACTOR=1  # can cause issues with text size
 fi
 
+# export QT_QPA_PLATFORMTHEME="qt5ct"
+
 # Multi-monitor setup
 if [ $(hostname) = egret ]; then
     # xrandr --output DP-2 --auto --output HDMI-1 --auto --right-of DP-2
@@ -66,5 +68,5 @@ export PATH="$HOME/.node_modules/bin:$PATH"
 export npm_config_prefix=~/.node_modules
 
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
-    # exec startx -- -dpi 144
+    exec startx -- -dpi 144
 fi
