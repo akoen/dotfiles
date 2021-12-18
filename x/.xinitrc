@@ -4,9 +4,6 @@ xcape -e "Caps_Lock=Escape"
 
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 
-# Gnome keyring
-eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
-
 # Required for Flatpak to fix delay in gnome applications starting
 #https://github.com/flatpak/xdg-desktop-portal-gtk/issues/72
 # dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
@@ -20,6 +17,9 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
+
+eval $(gnome-keyring-daemon --start)
+export SSH_AUTH_SOCK
 
 exec bspwm
 # exec xmonad
