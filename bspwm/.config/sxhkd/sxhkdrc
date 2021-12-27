@@ -47,9 +47,9 @@ super + a ; a
 super + backslash
       firefox
 
-# Speedcrunch popup window for math
+# Calculator
 super + x ; s
-    bspc rule -a SpeedCrunch -o state=floating rectangle=600x300+9999+35 & speedcrunch
+    bspc rule -a Qalculate-gtk -o state=floating & qalculate-gtk
 
 super + equal
 	{polybar-msg cmd hide && bspc config top_padding 0, polybar-msg cmd show}
