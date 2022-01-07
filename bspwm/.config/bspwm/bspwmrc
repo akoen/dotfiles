@@ -1,8 +1,9 @@
 #! /bin/zsh
 
+# See xrandr --listmonitors
 if [ $(hostname) = egret ]; then
-    bspc monitor DisplayPort-1 -d I II III IV V VI VII VIII
-    bspc monitor HDMI-A-0 -d IX X
+    bspc monitor DP-2 -d I II III IV V VI VII VIII
+    bspc monitor HDMI-1 -d IX X
 else
     bspc monitor -d I II III IV V VI VII VIII IX X
 fi
