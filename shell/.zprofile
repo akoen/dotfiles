@@ -64,5 +64,7 @@ export NNN_PLUG='p:preview-tabbed'
 export npm_config_prefix="$HOME/.local"
 
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
-    exec startx -- -dpi 144
+    # exec startx -- -dpi 144
+    source $HOME/.config/wayland-setup
+    systemd-cat --identifier=river river $@
 fi
