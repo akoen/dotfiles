@@ -64,8 +64,9 @@ super + Escape ; {l,s}
 ###Volume
 XF86AudioMute
  pulsemixer --toggle-mute
- 
- XF86Audio{Raise,Lower}Volume
+
+
+XF86Audio{Raise,Lower}Volume
  pulsemixer --change-volume {+,-}5
 
 XF86AudioPlay

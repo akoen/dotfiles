@@ -3,7 +3,7 @@
 IMAPStore mailbox-remote
 Host imap.mailbox.org
 User alex@koen.ca
-PassCmd "gpg2 --quiet --for-your-eyes-only --no-tty --decrypt ~/.local/share/password-store/alex@koen.ca.gpg"
+PassCmd "gpg2 --quiet --for-your-eyes-only --no-tty --decrypt ~/.config/passwords/mailbox.gpg"
 SSLType STARTTLS
 
 # Local storage
