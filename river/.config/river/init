@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh
 
 # This is the example configuration file for river.
 #
@@ -15,9 +15,9 @@ dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 
 # Mod+Shift+Return to start an instance of foot (https://codeberg.org/dnkl/foot)
 #riverctl map normal $mod+Shift Return spawn foot
-riverctl map normal $mod+Shift Return spawn alacritty
+riverctl map normal $mod Return spawn alacritty
 
-riverctl map normal $mod Space spawn 'wofi --show run'
+riverctl map normal $mod Space spawn 'wofi --show drun -i'
 
 riverctl map normal $mod tab spawn 'emacs'
 riverctl map normal $mod+Shift Tab spawn emacs
@@ -48,7 +48,7 @@ riverctl map normal $mod+Shift Period send-to-output next
 riverctl map normal $mod+Shift Comma send-to-output previous
 
 # Mod+Return to bump the focused view to the top of the layout stack
-riverctl map normal $mod Return zoom
+riverctl map normal $mod+Shift Return zoom
 
 # Mod+H and Mod+L to decrease/increase the main ratio of rivertile(1)
 riverctl map normal $mod H send-layout-cmd rivertile "main-ratio -0.05"
@@ -117,6 +117,10 @@ riverctl map normal $mod Right send-layout-cmd rivertile "main-location right"
 riverctl map normal $mod Down  send-layout-cmd rivertile "main-location bottom"
 riverctl map normal $mod Left  send-layout-cmd rivertile "main-location left"
 
+# Screenshots
+riverctl map normal None Print spawn 'grim -g "$(slurp)" - | wl-copy'
+riverctl map normal $mod Print spawn 'grim -g "$(slurp)" - | swappy -f -'
+
 # Dclare a passthrough mode. This mode has only a single mapping to return to
 # normal mode. This makes it useful for testing a nested wayland compositor
 riverctl declare-mode passthrough
@@ -164,6 +168,16 @@ riverctl float-filter-add title "popup title with spaces"
 
 # Set app-ids and titles of views which should use client side decorations
 riverctl csd-filter-add app-id "gedit"
+
+# Set wallpaper
+swaybg -i $(find ~/Pictures/Wallpapers/**/*.jpg | shuf -n 1) &
+
+# Autostart
+pcloud &
+nextcloud &
+gammastep-indicator -l 49.1:-123.7 -t 6000:2700 &
+mako &
+waybar &
 
 # Set and exec into the default layout generator, rivertile.
 # River will send the process group of the init executable SIGTERM on exit.
