@@ -1,7 +1,7 @@
 #! /bin/zsh
 
 # See xrandr --listmonitors
-if [ $(hostname) = egret ]; then
+if [ $(cat /etc/hostname) = egret ]; then
     bspc monitor DP-2 -d I II III IV V VI VII VIII
     bspc monitor HDMI-1 -d IX X
 else
@@ -49,7 +49,7 @@ feh --bg-fill $(find ~/Pictures/Wallpapers/**/*.jpg | shuf -n 1) $
 xsetroot -cursor_name left_ptr
 
 # Autostart
-killall sxhkd polybar redshift dunst pcloud copyq picom nextcloud
+killall sxhkd polybar redshift dunst pcloud copyq picom nextcloud noisetorch
 
 sxhkd &
 $HOME/.config/polybar/launch.sh
@@ -61,6 +61,7 @@ kdeconnect-indicator &
 nm-applet &
 copyq &
 picom --experimental-backends &
+noisetorch -u -t 90
 nextcloud &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
