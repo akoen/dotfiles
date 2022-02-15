@@ -14,7 +14,7 @@ padding = 2
 module-margin-left = 1
 module-margin-right = 1
 
-modules-right = pomodoro battery pulseaudio date powermenu
+modules-right = pomodoro battery pulseaudio temperature date powermenu
 modules-left = bspwm
 
 background = ${colors.background}
@@ -32,9 +32,9 @@ tray-offset-y = 0
 tray-scale = 1.0
 
 font-0 = "PragmataPro Mono:style=Bold:size=11;0"
-font-1 = "Font Awesome 5 Brands,Font Awesome 5 Brands Regular:style=Regular"
-font-2 = "Font Awesome 5 Free,Font Awesome 5 Free Solid:style=Solid"
-font-3 = "Font Awesome 5 Free,Font Awesome 5 Free Regular:style=Regular"
+font-1 = "Font Awesome 6 Brands,Font Awesome 5 Brands Regular:style=Regular"
+font-2 = "Font Awesome 6 Free,Font Awesome 5 Free Solid:style=Solid"
+font-3 = "Font Awesome 6 Free,Font Awesome 5 Free Regular:style=Regular"
 
 [module/bspwm]
 type = internal/bspwm
@@ -162,6 +162,34 @@ menu-3-0 = log out
 menu-3-0-exec = bspc quit
 menu-3-1 = cancel
 menu-3-1-exec = menu-open-0
+
+[module/temperature]
+type = internal/temperature
+
+; Seconds to sleep between updates
+; Default: 1
+interval = 0.5
+
+; Thermal zone to use
+; To list all the zone types, run 
+; $ for i in /sys/class/thermal/thermal_zone*; do echo "$i: $(<$i/type)"; done
+; Default: 0
+thermal-zone = 0
+
+; Full path of temperature sysfs path
+; Use `sensors` to find preferred temperature source, then run
+; $ for i in /sys/class/hwmon/hwmon*/temp*_input; do echo "$(<$(dirname $i)/name): $(cat ${i%_*}_label 2>/dev/null || echo $(basename ${i%_*})) $(readlink -f $i)"; done
+; to find path to desired file
+; Default reverts to thermal zone setting
+hwmon-path = /sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon0/temp1_input
+
+; Base temperature for where to start the ramp (in degrees celsius)
+; Default: 0
+base-temperature = 20
+
+; Threshold temperature to display warning label (in degrees celsius)
+; Default: 80
+warn-temperature = 60
 
 [module/pulseaudio]
 type= internal/pulseaudio
