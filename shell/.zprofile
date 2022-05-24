@@ -11,7 +11,7 @@ export TERMINAL="alacritty"
 
 # Display scaling
 # From https://forum.archlabslinux.com/t/solved-4k-monitor-dpi-scaling/3191/7
-if [ $(hostname) = falcon ]; then
+if [ $(cat /etc/hostname) = falcon ]; then
     export GDK_SCALE=2			# UI scale
     export GDK_DPI_SCALE=0.5		# Text scale
     export QT_AUTO_SCREEN_SCALE_FACTOR=1  # can cause issues with text size
@@ -19,17 +19,12 @@ fi
 
 # export QT_QPA_PLATFORMTHEME="qt5ct"
 
-# Multi-monitor setup
-if [ $(hostname) = egret ]; then
-    # xrandr --output DP-2 --auto --output HDMI-1 --auto --right-of DP-2
-fi
-
 # Cleanup
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
 
-export PATH=$HOME/bin:$PATH
+export PATH=$PATH:~/.local/bin
 export MOZ_USE_XINPUT2=1
 
 export ANDROID_HOME=/opt/android-sdk
@@ -47,8 +42,7 @@ export CXX=/usr/bin/clang++
 # https://wiki.archlinux.org/index.php/Makepkg#Improving_compile_times
 export MAKEFLAGS="-j$(nproc)"
 
-# Python
-export PATH=$PATH:~/.local/bin
+
 # Pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
@@ -64,7 +58,11 @@ export NNN_PLUG='p:preview-tabbed'
 export npm_config_prefix="$HOME/.local"
 
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
-    # exec startx -- -dpi 144
-    source $HOME/.config/wayland-setup
-    systemd-cat --identifier=river river $@
+    #source $HOME/.config/wayland-setup
+    eval $(gnome-keyring-daemon --start)
+    export SSH_AUTH_SOCK
+    systemctl --user import-environment SSH_AUTH_SOCK
+
+    exec startx -- -dpi 144
+    # systemd-cat --identifier=river river $@
 fi

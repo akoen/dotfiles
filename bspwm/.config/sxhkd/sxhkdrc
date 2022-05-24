@@ -45,6 +45,15 @@ super + a ; a
 super + backslash
  firefox
 
+F1
+ wmctrl -xa firefox
+
+F2
+ wmctrl -xa emacs
+
+F3
+ wmctrl -xa nemo
+
 # Calculator
 super + x ; s
  bspc rule -a Qalculate-gtk -o state=floating & qalculate-gtk
@@ -109,6 +118,9 @@ super + {_,shift + }q
 # alternate between the tiled and monocle layout
 super + m
  bspc desktop -l next
+
+super + shift + m
+ bspc node -t \~fullscreen
 
 # send the newest marked node to the newest preselected node
 super + y

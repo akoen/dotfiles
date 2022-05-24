@@ -11,3 +11,25 @@
 	autocrlf = input
 [pull]
 	rebase = false
+[commit]
+	verbose = true
+
+[url "https://github.com/"]
+        insteadOf = gh:
+[url "git@github.com:"]
+        pushInsteadOf = "gh:"
+
+[url "https://gitlab.com/"]
+        insteadOf = gl:
+[url "git@gitlab.com:"]
+        pushInsteadOf = "gl:"
+
+[url "https://aur.archlinux.org/"]
+        insteadOf = aur:
+[url "aur@aur.archlinux.org:"]
+        pushInsteadOf = "aur:"
+
+
+# This next lines include Netlify's Git Credential Helper configuration in your Git configuration.
+[include]
+  path = /home/alex/.config/netlify/helper/git-config

@@ -28,3 +28,5 @@ alias xclip="xclip -selection c"
 alias nnn='NNN_FIFO="$(mktemp -u)" nnn'
 
 alias doom='emacs --with-profile doom'
+
+alias sysu='systemctl --user'

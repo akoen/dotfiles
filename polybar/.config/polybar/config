@@ -145,8 +145,12 @@ menu-0-0 = reboot
 menu-0-0-exec = menu-open-1
 menu-0-1 = power off
 menu-0-1-exec = menu-open-2
-menu-0-2 = log out
+menu-0-2 = sleep
 menu-0-2-exec = menu-open-3
+menu-0-3 = log out
+menu-0-3-exec = menu-open-4
+
+
 
 menu-1-0 = cancel
 menu-1-0-exec = menu-open-0
@@ -158,10 +162,15 @@ menu-2-0-exec = poweroff
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
 
-menu-3-0 = log out
-menu-3-0-exec = bspc quit
+menu-3-0 = sleep
+menu-3-0-exec = systemctl suspend
 menu-3-1 = cancel
 menu-3-1-exec = menu-open-0
+
+menu-4-0 = log out
+menu-4-0-exec = bspc quit
+menu-4-1 = cancel
+menu-4-1-exec = menu-open-0
 
 [module/temperature]
 type = internal/temperature

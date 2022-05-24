@@ -2,8 +2,8 @@
 
 # See xrandr --listmonitors
 if [ $(cat /etc/hostname) = egret ]; then
-    bspc monitor DP-2 -d I II III IV V VI VII VIII
-    bspc monitor HDMI-1 -d IX X
+    bspc monitor DisplayPort-0 -d I II III IV V VI VII VIII
+    bspc monitor HDMI-A-0 -d IX X
 else
     bspc monitor -d I II III IV V VI VII VIII IX X
 fi
@@ -49,19 +49,16 @@ feh --bg-fill $(find ~/Pictures/Wallpapers/**/*.jpg | shuf -n 1) $
 xsetroot -cursor_name left_ptr
 
 # Autostart
-killall sxhkd polybar redshift dunst pcloud copyq picom nextcloud noisetorch
+killall sxhkd polybar redshift dunst copyq picom nextcloud
 
 sxhkd &
 $HOME/.config/polybar/launch.sh
 redshift-gtk -l 49.1:-123.7 -t 6000:2700 &
 flameshot &
 dunst &
-pcloud &
-kdeconnect-indicator &
 nm-applet &
 copyq &
 picom --experimental-backends &
-noisetorch -u -t 90
 nextcloud &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
@@ -73,7 +70,7 @@ bspc rule -a firefox -o desktop=I && firefox &
 # Emacs needs a few seconds to start
 sleep 5
 
-bspc rule -a Emacs -o desktop=X && emacsclient -nc --eval '(org-agenda nil "g")' &
+bspc rule -a Chromium -o desktop=X && gtk-launch Todoist
 bspc rule -a kalendar -o desktop=X && kalendar &
 bspc node @X:/ -R 180
 
