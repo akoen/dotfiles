@@ -30,3 +30,6 @@ alias nnn='NNN_FIFO="$(mktemp -u)" nnn'
 alias doom='emacs --with-profile doom'
 
 alias sysu='systemctl --user'
+
+# Support command aliases
+alias sudo='sudo '
