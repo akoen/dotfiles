@@ -2,8 +2,8 @@
 
 # See xrandr --listmonitors
 if [ $(cat /etc/hostname) = egret ]; then
-    bspc monitor DisplayPort-0 -d I II III IV V VI VII VIII
-    bspc monitor HDMI-A-0 -d IX X
+    bspc monitor DisplayPort-0 -d I II III IV V VI VII
+    bspc monitor HDMI-A-0 -d VIII IX X
 else
     bspc monitor -d I II III IV V VI VII VIII IX X
 fi
@@ -22,6 +22,7 @@ bspc config split_ratio         0.5
 bspc config borderless_monocle  false
 bspc config gapless_monocle     false
 bspc config click_to_focus      true
+bspc config focus_follows_pointer true
 
 bspc config top_padding 30
 bspc config bottom_padding 0

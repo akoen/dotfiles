@@ -13,6 +13,8 @@ alias ls='ls --color=auto'
 # Because vim is good
 alias :q="exit"
 
+alias cat='bat'
+
 alias -g G='| grep' #now you can do: ls foo G something
 
 o() {

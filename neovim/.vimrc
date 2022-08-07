@@ -4,7 +4,7 @@
 " package;
 
 " Sets how many lines of history VIM has to remember
-let mapleader = ","            " set leader key to ,
+let mapleader = "\<Space>"            " set leader key to ,
 let maplocalleader = "\\"      " set local leader to \
 
 set history=500

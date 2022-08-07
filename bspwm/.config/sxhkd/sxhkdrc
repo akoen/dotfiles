@@ -97,6 +97,9 @@ super + Print
  super + Up
  ddcutil setvcp 10 + 5
 
+super + shift + Print
+ maim -u -s | convert - -transparent white png: | xclip -selection clipboard -t image/png
+
 # Brightness goes down
 XF86MonBrightnessDown
  light -U 5;
