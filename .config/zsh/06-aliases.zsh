@@ -1,3 +1,5 @@
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+
 # Set vim to neovim
 alias vim='nvim'
 
