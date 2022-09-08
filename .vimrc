@@ -277,7 +277,8 @@ let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger='<tab>'
 let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
 
-let g:UltiSnipsSnippetsDir = "~/.config/nvim/snippets"
+let g:UltiSnipsSnippetsDir = $HOME.'/.config/nvim/ultisnips'
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/ultisnips']
 
 " CoC
 
