@@ -9,6 +9,34 @@ def env(name):
 	[x,y] = vim.eval("vimtex#env#is_inside('" + name + "')") 
 	return x != '0' and y != '0'
 
+def create_matrix(snip):
+
+        matrix_str = (snip.buffer[snip.line].split('mat')[0]+'matrix').strip()
+
+        rows = 'x'.join(snip.buffer[snip.line].split("x", 2)[:-1])
+        cols = 'x'.join(snip.buffer[snip.line].split("x", 2)[-1:])
+
+        int_val = lambda string: int(''.join(s for s in string if s.isdigit()))
+
+        rows = int_val(rows)
+        cols = int_val(cols)
+
+        offset = cols + 1
+        old_spacing = snip.buffer[snip.line][:snip.buffer[snip.line].rfind('\t') + 1]
+
+        snip.buffer[snip.line] = ''
+
+        final_str = old_spacing + "\\begin{"+matrix_str+"}\n"
+        for i in range(rows):
+                final_str += old_spacing + '\t'
+                final_str += " & ".join(['$' + str(i * cols + j + offset) for j in range(cols)])
+
+                final_str += " \\\\\\\n"
+
+        final_str += old_spacing + "\\end{"+matrix_str+"}\n$0"
+
+        snip.expand_anon(final_str)
+
 endglobal
 
 
@@ -218,13 +246,13 @@ snippet floor "floor" iA
 \left\lfloor $1 \right\rfloor$0
 endsnippet
 
-snippet pmat "pmat" iA
-\begin{pmatrix} $1 \end{pmatrix} $0
-endsnippet
+# snippet pmat "pmat" iA
+# \begin{pmatrix} $1 \end{pmatrix} $0
+# endsnippet
 
-snippet bmat "bmat" iA
-\begin{bmatrix} $1 \end{bmatrix} $0
-endsnippet
+# snippet bmat "bmat" iA
+# \begin{bmatrix} $1 \end{bmatrix} $0
+# endsnippet
 
 context "math()"
 snippet () "left( right)" iA
@@ -639,6 +667,10 @@ endsnippet
 
 snippet DD "D" iA
 \mathbb{D}
+endsnippet
+
+pre_expand "create_matrix(snip)"
+snippet "(small|[bBpvV])?mat(rix)?(\d+)x(\d+)" "Generate (small|[bBpvV])?matrix of *rows* by *columns*" br
 endsnippet
 
 # vim:ft=snippets
