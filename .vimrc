@@ -173,6 +173,12 @@ set nofoldenable
 set foldmethod=syntax
 set foldlevelstart=99
 
+
+set clipboard+=unnamedplus
+
+inoremap <C-f> <right>
+
+
 "}}}
 " Files, backups and undo {{{
 " Turn backup off, since most stuff is in SVN, git et.c anyway...
@@ -186,7 +192,7 @@ if has('persistent_undo') && isdirectory(expand('~').'/.vim/backups')
     set undofile
 endif
 
-nnoremap <Space>w :w<CR>
+nnoremap <Space>fs :w<CR>
 
 " :W sudo saves the file 
 " (useful for handling the permission-denied error)
@@ -263,12 +269,11 @@ nmap <Space>p <Plug>(grammarous-move-to-previous-error)
 " Vimtex
 " Set default pdf-viewer
 let g:tex_flavor = 'latex'
-let g:tex_conceal = ''
-let g:vimtex_fold_manual = 1
+set conceallevel=1
+let g:tex_conceal='abdmg'
+let g:vimtex_quickfix_mode=0
 let g:vimtex_view_method = 'zathura'
 let g:vimtex_view_general_viewer = 'zathura'
-let g:vimtex_compiler_progname = 'nvr'
-let g:polyglot_disabled = ['latex']
 
 nnoremap <Bslash>cw :VimtexCountWords<CR>
 
@@ -276,7 +281,6 @@ nnoremap <Bslash>cw :VimtexCountWords<CR>
 let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger='<tab>'
 let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
-
 let g:UltiSnipsSnippetsDir = $HOME.'/.config/nvim/ultisnips'
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/ultisnips']
 
