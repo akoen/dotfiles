@@ -12,13 +12,14 @@ def env(name):
 	[x,y] = vim.eval("vimtex#env#is_inside('" + name + "')") 
 	return x != '0' and y != '0'
 
-def create_matrix(snip):
-# matrix_str = (snip.buffer[snip.line].split('mat')[0]+'matrix').strip()
-	text = list(snip.buffer[snip.line].replace('$', '').strip().split(' ')[-1])
-
-	matrix_str = text[-2] + 'matrix'
-	rows = int(text[0])
-	cols = int(text[1])
+def create_matrix(snip, rows, cols, matrix_str):
+	# text = list(snip.buffer[snip.line].replace('$', '').strip().split(' ')[-1])
+	# matrix_str = text[-2] + 'matrix'
+	# rows = int(text[0])
+	# cols = int(text[1])
+	matrix_str = matrix_str+"matrix"
+	rows = int(rows)
+	cols = int(cols)
 
 	offset = cols + 1
 	old_spacing = snip.buffer[snip.line][:snip.buffer[snip.line].rfind('\t') + 1]
@@ -31,10 +32,18 @@ def create_matrix(snip):
 		final_str += " & ".join(['${' + str(i * cols + j + offset) + ':0}' for j in range(cols)])
 		final_str += " \\\\\\\n"
 
-	final_str += old_spacing + "\\end{"+matrix_str+"}\n$0"
+	final_str += old_spacing + "\\end{"+matrix_str+"}$0"
 
 	snip.expand_anon(final_str)
+
+
 endglobal
+
+context "math()"
+pre_expand "create_matrix(snip, match.group(1), match.group(2), match.group(3))"
+snippet "(\d)(\d)([bBpvV])m" "Generate (small|[bBpvV])?matrix of *rows* by *columns*" r
+endsnippet
+
 
 snippet template "Basic template" b
 \documentclass[a4paper]{article}
@@ -117,33 +126,16 @@ snippet pac "Package" b
 \usepackage[${1:options}]{${2:package}}$0
 endsnippet
 
-
-
 context "text()"
 snippet ;b "bold" A
 \textbf{$1}$0
 endsnippet
-
 
 context "text()"
 snippet ;i "italic" iA
 \textit{$1}$0
 endsnippet
 
-context "math()"
-snippet ;r "mathrm" Ai
-\mathrm{$1}$0
-endsnippet
-
-context "math()"
-snippet ;r "mathrm" Ai
-\mathrm{$1}$0
-endsnippet
-
-context "math()"
-snippet ;B "mathbb" Ai
-\mathrmbb{$1}$0
-endsnippet
 
 ## MATH SNIPPETS
 
@@ -271,13 +263,13 @@ snippet floor "floor" iA
 \left\lfloor $1 \right\rfloor$0
 endsnippet
 
-snippet pmat "pmat" iA
-\begin{pmatrix} $1 \end{pmatrix} $0
-endsnippet
+# snippet pmat "pmat" iA
+# \begin{pmatrix} $1 \end{pmatrix} $0
+# endsnippet
 
-snippet bmat "bmat" iA
-\begin{bmatrix} $1 \end{bmatrix} $0
-endsnippet
+# snippet bmat "bmat" iA
+# \begin{bmatrix} $1 \end{bmatrix} $0
+# endsnippet
 
 context "math()"
 snippet () "left( right)" iA
@@ -694,14 +686,467 @@ snippet DD "D" iA
 \mathbb{D}
 endsnippet
 
-snippet `a "`a"
+# Math symbols (cdlatex)
+
+context "math()"
+snippet `a "\alpha" iA
 \alpha
 endsnippet
 
-# context "math()"
-pre_expand "create_matrix(snip)"
-snippet "\d\d[bBpvV]m" "Generate (small|[bBpvV])?matrix of *rows* by *columns*" br
+context "math()"
+snippet `A "\forall" iA
+\forall
 endsnippet
+
+context "math()"
+snippet `b "\beta" iA
+\beta
+endsnippet
+
+context "math()"
+snippet `d "\delta" iA
+\delta
+endsnippet
+
+context "math()"
+snippet `D "\Delta" iA
+\Delta
+endsnippet
+
+context "math()"
+snippet `e "\epsilon" iA
+\epsilon
+endsnippet
+
+context "math()"
+snippet `E "\exists" iA
+\exists
+endsnippet
+
+context "math()"
+snippet `f "\phi" iA
+\phi
+endsnippet
+
+context "math()"
+snippet `g "\gamma" iA
+\gamma
+endsnippet
+
+context "math()"
+snippet `G "\Gamma" iA
+\Gamma
+endsnippet
+
+context "math()"
+snippet `h "\eta" iA
+\eta
+endsnippet
+
+context "math()"
+snippet `i "\in" iA
+\in
+endsnippet
+
+context "math()"
+snippet `k "\kappa" iA
+\kappa
+endsnippet
+
+context "math()"
+snippet `l "\lambda" iA
+\lambda
+endsnippet
+
+context "math()"
+snippet `L "\Lambda" iA
+\Lambda
+endsnippet
+
+context "math()"
+snippet `m "\mu" iA
+\mu
+endsnippet
+
+context "math()"
+snippet `n "\nu" iA
+\nu
+endsnippet
+
+context "math()"
+snippet `N "\nabla" iA
+\nabla
+endsnippet
+
+context "math()"
+snippet `o "\omega" iA
+\omega
+endsnippet
+
+context "math()"
+snippet `O "\Omega" iA
+\Omega
+endsnippet
+
+context "math()"
+snippet `p "\pi" iA
+\pi
+endsnippet
+
+context "math()"
+snippet `P "\Pi" iA
+\Pi
+endsnippet
+
+context "math()"
+snippet `q "\theta" iA
+\theta
+endsnippet
+
+context "math()"
+snippet `Q "\Theta" iA
+\Theta
+endsnippet
+
+context "math()"
+snippet `r "\rho" iA
+\rho
+endsnippet
+
+context "math()"
+snippet `s "\sigma" iA
+\sigma
+endsnippet
+
+context "math()"
+snippet `S "\Sigma" iA
+\Sigma
+endsnippet
+
+context "math()"
+snippet `t "\tau" iA
+\tau
+endsnippet
+
+context "math()"
+snippet `u "\upsilon" iA
+\upsilon
+endsnippet
+
+context "math()"
+snippet `U "\Upsilon" iA
+\Upsilon
+endsnippet
+
+context "math()"
+snippet `v "\vee" iA
+\vee
+endsnippet
+
+context "math()"
+snippet `V "\Phi" iA
+\Phi
+endsnippet
+
+context "math()"
+snippet `w "\xi" iA
+\xi
+endsnippet
+
+context "math()"
+snippet `W "\Xi" iA
+\Xi
+endsnippet
+
+context "math()"
+snippet `x "\chi" iA
+\chi
+endsnippet
+
+context "math()"
+snippet `y "\psi" iA
+\psi
+endsnippet
+
+context "math()"
+snippet `Y "\Psi" iA
+\Psi
+endsnippet
+
+context "math()"
+snippet `z "\zeta" iA
+\zeta
+endsnippet
+
+context "math()"
+snippet `0 "\emptyset" iA
+\emptyset
+endsnippet
+
+context "math()"
+snippet `8 "\infty" iA
+\infty
+endsnippet
+
+context "math()"
+snippet `! "\neg" iA
+\neg
+endsnippet
+
+context "math()"
+snippet `^ "\uparrow" iA
+\uparrow
+endsnippet
+
+context "math()"
+snippet `& "\wedge" iA
+\wedge
+endsnippet
+
+context "math()"
+snippet `~ "\approx" iA
+\approx
+endsnippet
+
+context "math()"
+snippet `_ "\downarrow" iA
+\downarrow
+endsnippet
+
+context "math()"
+snippet `+ "\cup" iA
+\cup
+endsnippet
+
+context "math()"
+snippet `- "\leftrightarrow" iA
+\leftrightarrow
+endsnippet
+
+context "math()"
+snippet `* "\times" iA
+\times
+endsnippet
+
+context "math()"
+snippet `/ "\not" iA
+\not
+endsnippet
+
+context "math()"
+snippet `| "\mapsto" iA
+\mapsto
+endsnippet
+
+context "math()"
+snippet `\ "\setminus" iA
+\setminus
+endsnippet
+
+context "math()"
+snippet `= "\Leftrightarrow" iA
+\Leftrightarrow
+endsnippet
+
+context "math()"
+snippet `( "\langle" iA
+\langle
+endsnippet
+
+context "math()"
+snippet `) "\rangle" iA
+\rangle
+endsnippet
+
+context "math()"
+snippet `[ "\Leftarrow" iA
+\Leftarrow
+endsnippet
+
+context "math()"
+snippet `] "\Rightarrow" iA
+\Rightarrow
+endsnippet
+
+context "math()"
+snippet `{ "\subset" iA
+\subset
+endsnippet
+
+context "math()"
+snippet `} "\supset" iA
+\supset
+endsnippet
+
+context "math()"
+snippet `< "\leftarrow" iA
+\leftarrow
+endsnippet
+
+context "math()"
+snippet `> "\rightarrow" iA
+\rightarrow
+endsnippet
+
+context "math()"
+snippet `' "\prime" iA
+\prime
+endsnippet
+
+context "math()"
+snippet `. "\cdot" iA
+\cdot
+endsnippet
+
+# Math modifiers
+
+context "math()"
+snippet ;. "\dot" iA
+\dot{$1}$0
+endsnippet
+
+context "math()"
+snippet ;: "\\ddot" iA
+\ddot{$1}$0
+endsnippet
+
+context "math()"
+snippet ;~ "\\tilde" iA
+\tilde{$1}$0
+endsnippet
+
+context "math()"
+snippet ;N  "\\widetilde" iA
+\widetilde{$1}$0
+endsnippet
+
+context "math()"
+snippet ;^  "\\hat" iA
+\hat{$1}$0
+endsnippet
+
+context "math()"
+snippet ;H  "\\widehat" iA
+\widehat{$1}$0
+endsnippet
+
+context "math()"
+snippet ;- "\\bar" iA
+\bar{$1}$0
+endsnippet
+
+context "math()"
+snippet ;T  "\\overline" iA
+\overline{$1}$0
+endsnippet
+
+context "math()"
+snippet ;_ "\\underline" iA
+\underline{$1}$0
+endsnippet
+
+context "math()"
+snippet ;]  "\\overbrace" iA
+\overbrace{$1}$0
+endsnippet
+
+context "math()"
+snippet ;} "\\underbrace" iA
+\underbrace{$1}$0
+endsnippet
+
+context "math()"
+snippet ;> "\\vec" iA
+\vec{$1}$0
+endsnippet
+
+context "math()"
+snippet ;/  "\\grave" iA
+\grave{$1}$0
+endsnippet
+
+#\ \\acute
+
+context "math()"
+snippet ;v  "\\check" iA
+\check{$1}$0
+endsnippet
+
+context "math()"
+snippet ;u  "\\breve" iA
+\breve{$1}$0
+endsnippet
+
+context "math()"
+snippet ;m  "\\mbox" iA
+\mbox{$1}$0
+endsnippet
+
+context "math()"
+snippet ;t  "\\text" iA
+\text{$1}$0
+endsnippet
+
+context "math()"
+snippet ;c  "\\mathcal" iA
+\mathcal{$1}$0
+endsnippet
+
+context "math()"
+snippet ;r  "\\mathrm" iA
+\mathrm{$1}$0
+endsnippet
+
+context "math()"
+snippet ;i  "\\mathit" iA
+\mathit{$1}$0
+endsnippet
+
+context "math()"
+snippet ;b  "\\mathbf" iA
+\mathbf{$1}$0
+endsnippet
+
+context "math()"
+snippet ;e  "\\mathem" iA
+\mathem{$1}$0
+endsnippet
+
+context "math()"
+snippet ;y  "\\mathtt" iA
+\mathtt{$1}$0
+endsnippet
+
+context "math()"
+snippet ;f  "\\mathsf" iA
+\mathsf{$1}$0
+endsnippet
+
+context "math()"
+snippet ;0  "\\textstyle" iA
+\textstyle{$1}$0
+endsnippet
+
+context "math()"
+snippet ;1  "\\displaystyle" iA
+\displaystyle{$1}$0
+endsnippet
+
+context "math()"
+snippet ;2  "\\scriptstyle" iA
+\scriptstyle{$1}$0
+endsnippet
+
+context "math()"
+snippet ;3  "\\scriptscriptstyle" iA
+\scriptscriptstyle{$1}$0
+endsnippet
+
+# (  \\left( ? \\right)
+# [  \\left[ ? \\right]
+# {  \\left\\{ ? \\right\\}
+# <  \\left< ? \\right>
+# |  \\left| ? \\right|
 
 # vim:ft=snippets
 
