@@ -146,13 +146,13 @@ endsnippet
 snippet dm "Math" wA
 \[
 ${1:${VISUAL}}
-.\] $0
+\] $0
 endsnippet
 
 snippet ali "Align" bA
 \begin{align*}
 	${1:${VISUAL}}
-.\end{align*}
+\end{align*}
 endsnippet
 
 
@@ -673,9 +673,477 @@ pre_expand "create_matrix(snip)"
 snippet "(small|[bBpvV])?mat(rix)?(\d+)x(\d+)" "Generate (small|[bBpvV])?matrix of *rows* by *columns*" br
 endsnippet
 
-snippet `a "`a"
+context "math()"
+snippet ;b "mathbf" iA
+\mathbf{$1}$0
+endsnippet
+
+context "math()"
+snippet ;r "mathrm" iA
+\mathrm{$1}$0
+endsnippet
+
+# Math symbols (cdlatex)
+
+context "math()"
+snippet `a "\alpha"
 \alpha
 endsnippet
+
+context "math()"
+snippet `A "\forall"
+\forall
+endsnippet
+
+context "math()"
+snippet `b "\beta"
+\beta
+endsnippet
+
+context "math()"
+snippet `d "\delta"
+\delta
+endsnippet
+
+context "math()"
+snippet `D "\Delta"
+\Delta
+endsnippet
+
+context "math()"
+snippet `e "\epsilon"
+\epsilon
+endsnippet
+
+context "math()"
+snippet `E "\exists"
+\exists
+endsnippet
+
+context "math()"
+snippet `f "\phi"
+\phi
+endsnippet
+
+context "math()"
+snippet `g "\gamma"
+\gamma
+endsnippet
+
+context "math()"
+snippet `G "\Gamma"
+\Gamma
+endsnippet
+
+context "math()"
+snippet `h "\eta"
+\eta
+endsnippet
+
+context "math()"
+snippet `i "\in"
+\in
+endsnippet
+
+context "math()"
+snippet `k "\kappa"
+\kappa
+endsnippet
+
+context "math()"
+snippet `l "\lambda"
+\lambda
+endsnippet
+
+context "math()"
+snippet `L "\Lambda"
+\Lambda
+endsnippet
+
+context "math()"
+snippet `m "\mu"
+\mu
+endsnippet
+
+context "math()"
+snippet `n "\nu"
+\nu
+endsnippet
+
+context "math()"
+snippet `N "\nabla"
+\nabla
+endsnippet
+
+context "math()"
+snippet `o "\omega"
+\omega
+endsnippet
+
+context "math()"
+snippet `O "\Omega"
+\Omega
+endsnippet
+
+context "math()"
+snippet `p "\pi"
+\pi
+endsnippet
+
+context "math()"
+snippet `P "\Pi"
+\Pi
+endsnippet
+
+context "math()"
+snippet `q "\theta"
+\theta
+endsnippet
+
+context "math()"
+snippet `Q "\Theta"
+\Theta
+endsnippet
+
+context "math()"
+snippet `r "\rho"
+\rho
+endsnippet
+
+context "math()"
+snippet `s "\sigma"
+\sigma
+endsnippet
+
+context "math()"
+snippet `S "\Sigma"
+\Sigma
+endsnippet
+
+context "math()"
+snippet `t "\tau"
+\tau
+endsnippet
+
+context "math()"
+snippet `u "\upsilon"
+\upsilon
+endsnippet
+
+context "math()"
+snippet `U "\Upsilon"
+\Upsilon
+endsnippet
+
+context "math()"
+snippet `v "\vee"
+\vee
+endsnippet
+
+context "math()"
+snippet `V "\Phi"
+\Phi
+endsnippet
+
+context "math()"
+snippet `w "\xi"
+\xi
+endsnippet
+
+context "math()"
+snippet `W "\Xi"
+\Xi
+endsnippet
+
+context "math()"
+snippet `x "\chi"
+\chi
+endsnippet
+
+context "math()"
+snippet `y "\psi"
+\psi
+endsnippet
+
+context "math()"
+snippet `Y "\Psi"
+\Psi
+endsnippet
+
+context "math()"
+snippet `z "\zeta"
+\zeta
+endsnippet
+
+context "math()"
+snippet `0 "\emptyset"
+\emptyset
+endsnippet
+
+context "math()"
+snippet `8 "\infty"
+\infty
+endsnippet
+
+context "math()"
+snippet `! "\neg"
+\neg
+endsnippet
+
+context "math()"
+snippet `^ "\uparrow"
+\uparrow
+endsnippet
+
+context "math()"
+snippet `& "\wedge"
+\wedge
+endsnippet
+
+context "math()"
+snippet `~ "\approx"
+\approx
+endsnippet
+
+context "math()"
+snippet `_ "\downarrow"
+\downarrow
+endsnippet
+
+context "math()"
+snippet `+ "\cup"
+\cup
+endsnippet
+
+context "math()"
+snippet `- "\leftrightarrow"
+\leftrightarrow
+endsnippet
+
+context "math()"
+snippet `* "\times"
+\times
+endsnippet
+
+context "math()"
+snippet `/ "\not"
+\not
+endsnippet
+
+context "math()"
+snippet `| "\mapsto"
+\mapsto
+endsnippet
+
+context "math()"
+snippet `\ "\setminus"
+\setminus
+endsnippet
+
+context "math()"
+snippet `= "\Leftrightarrow"
+\Leftrightarrow
+endsnippet
+
+context "math()"
+snippet `( "\langle"
+\langle
+endsnippet
+
+context "math()"
+snippet `) "\rangle"
+\rangle
+endsnippet
+
+context "math()"
+snippet `[ "\Leftarrow"
+\Leftarrow
+endsnippet
+
+context "math()"
+snippet `] "\Rightarrow"
+\Rightarrow
+endsnippet
+
+context "math()"
+snippet `{ "\subset"
+\subset
+endsnippet
+
+context "math()"
+snippet `} "\supset"
+\supset
+endsnippet
+
+context "math()"
+snippet `< "\leftarrow"
+\leftarrow
+endsnippet
+
+context "math()"
+snippet `> "\rightarrow"
+\rightarrow
+endsnippet
+
+context "math()"
+snippet `' "\prime"
+\prime
+endsnippet
+
+context "math()"
+snippet `. "\cdot"
+\cdot
+endsnippet
+
+# Math modifiers
+
+context "math()"
+snippet '. "\dot"
+\dot{$1}$0
+endsnippet
+
+context "math()"
+snippet ': "\\ddot"
+\ddot{$1}$0
+endsnippet
+
+context "math()"
+snippet '~ "\\tilde"
+\tilde{$1}$0
+endsnippet
+
+context "math()"
+snippet 'N  "\\widetilde"
+\widetilde{$1}$0
+endsnippet
+
+context "math()"
+snippet '^  "\\hat"
+\hat{$1}$0
+endsnippet
+
+context "math()"
+snippet 'H  "\\widehat"
+\widehat{$1}$0
+endsnippet
+
+context "math()"
+snippet '- "\\bar"
+\bar{$1}$0
+endsnippet
+
+context "math()"
+snippet 'T  "\\overline"
+\overline{$1}$0
+endsnippet
+
+context "math()"
+snippet '_ "\\underline"
+\underline{$1}$0
+endsnippet
+
+context "math()"
+snippet ']  "\\overbrace"
+\overbrace{$1}$0
+endsnippet
+
+context "math()"
+snippet '} "\\underbrace"
+\underbrace{$1}$0
+endsnippet
+
+context "math()"
+snippet '> "\\vec"
+\vec{$1}$0
+endsnippet
+
+context "math()"
+snippet '/  "\\grave"
+\grave{$1}$0
+endsnippet
+
+#\ \\acute
+
+context "math()"
+snippet 'v  "\\check"
+\check{$1}$0
+endsnippet
+
+context "math()"
+snippet 'u  "\\breve"
+\breve{$1}$0
+endsnippet
+
+context "math()"
+snippet 'm  "\\mbox"
+\mbox{$1}$0
+endsnippet
+
+context "math()"
+snippet 't  "\\text"
+\text{$1}$0
+endsnippet
+
+context "math()"
+snippet 'c  "\\mathcal"
+\mathcal{$1}$0
+endsnippet
+
+context "math()"
+snippet 'r  "\\mathrm"
+\mathrm{$1}$0
+endsnippet
+
+context "math()"
+snippet 'i  "\\mathit"
+\mathit{$1}$0
+endsnippet
+
+context "math()"
+snippet 'b  "\\mathbf"
+\mathbf{$1}$0
+endsnippet
+
+context "math()"
+snippet 'e  "\\mathem"
+\mathem{$1}$0
+endsnippet
+
+context "math()"
+snippet 'y  "\\mathtt"
+\mathtt{$1}$0
+endsnippet
+
+context "math()"
+snippet 'f  "\\mathsf"
+\mathsf{$1}$0
+endsnippet
+
+context "math()"
+snippet '0  "\\textstyle"
+\textstyle{$1}$0
+endsnippet
+
+context "math()"
+snippet '1  "\\displaystyle"
+\displaystyle{$1}$0
+endsnippet
+
+context "math()"
+snippet '2  "\\scriptstyle"
+\scriptstyle{$1}$0
+endsnippet
+
+context "math()"
+snippet '3  "\\scriptscriptstyle"
+\scriptscriptstyle{$1}$0
+endsnippet
+
+# (  \\left( ? \\right)
+# [  \\left[ ? \\right]
+# {  \\left\\{ ? \\right\\}
+# <  \\left< ? \\right>
+# |  \\left| ? \\right|
 
 # vim:ft=snippets
 
