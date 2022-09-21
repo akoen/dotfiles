@@ -498,7 +498,7 @@ endsnippet
 
 priority 200
 context "math()"
-snippet '(?<!\\)(arcsin|arccos|arctan|arccot|arccsc|arcsec|pi|zeta|int)' "ln" rwA
+snippet '(?<!\\)\b(arcsin|arccos|arctan|arccot|arccsc|arcsec|pi|zeta|int|iint|iiint)' "ln" rwA
 \\`!p snip.rv = match.group(1)`
 endsnippet
 
@@ -756,6 +756,12 @@ endsnippet
 context "math()"
 snippet `l "\lambda" iA
 \lambda
+endsnippet
+
+priority 10
+context "math()"
+snippet ``l "\ell" iA
+\ell
 endsnippet
 
 context "math()"
@@ -1068,8 +1074,8 @@ endsnippet
 #\ \\acute
 
 context "math()"
-snippet ;v  "\\check" iA
-\check{$1}$0
+snippet ;v  "\\vec" iA
+\vec{$1}$0
 endsnippet
 
 context "math()"

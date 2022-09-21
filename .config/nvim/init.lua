@@ -11,7 +11,7 @@ end
 require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'                                              -- Package manager
   use 'tpope/vim-fugitive'                                                  -- Git commands in nvim
-  use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim', commit='b2752b3d134656d5e5fa25721c52a9276ba9b2d1' }
+  use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
   use 'tpope/vim-rhubarb'                                                   -- Fugitive-companion to interact with github
   use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } } -- Add git related info in the signs columns and popups
   use 'numToStr/Comment.nvim'                                               -- "gc" to comment visual regions/lines
@@ -77,11 +77,9 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
--- Set highlight on search
 vim.o.hlsearch = false
-
--- Make line numbers default
 vim.wo.number = true
+vim.wo.relativenumber = true
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
@@ -97,12 +95,17 @@ vim.o.undofile = true
 -- Case insensitive searching UNLESS /C or capital in search
 vim.o.ignorecase = true
 vim.o.smartcase = true
+vim.o.hlsearch = true
+vim.o.incsearch = true
+
+-- Substitution
+vim.o.gdefault = true
 
 -- Tabs
-vim.o.expandtab=true
-vim.o.smarttab=true
-vim.o.shiftwidth=2
-vim.o.tabstop=2
+vim.o.expandtab = true
+vim.o.smarttab = true
+vim.o.shiftwidth = 2
+vim.o.tabstop = 1
 
 -- Decrease update time
 vim.o.updatetime = 250
@@ -120,7 +123,7 @@ vim.o.completeopt = 'menuone,noselect'
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.maplocalleader = '\\'
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
@@ -128,9 +131,13 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 vim.keymap.set('n', '<leader>fs', '<Cmd>w<cr>')
 
--- Remap for dealing with word wrap
+-- Use visual line mode unless a prefix number is provided
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+vim.keymap.set('n', '<leader>.', ':e ')
+vim.keymap.set('n', '<leader>pc', ':e ~/.config/nvim/init.lua<Cr>')
+
+vim.keymap.set('i', '<C-f>', '<right>')
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -182,6 +189,10 @@ vim.g.tex_conceal=''
 vim.g.vimtex_quickfix_mode=0
 vim.g.vimtex_view_method = 'zathura'
 vim.g.vimtex_view_general_viewer = 'zathura'
+
+-- Gilles Castel LaTeX setup
+vim.cmd([[nnoremap  <Esc>: silent exec '.!inkscape-figures create "'.getline('.').'" "'.b:vimtex.root.'/figures/"'<CR><CR>:w<CR>]])
+vim.cmd([[nnoremap <leader>le : silent exec '!inkscape-figures edit "'.b:vimtex.root.'/figures/" > /dev/null 2>&1 &'<CR><CR>:redraw!<CR>]])
 
 --- clipboard-image
 require'clipboard-image'.setup {
@@ -329,7 +340,7 @@ local on_attach = function(_, bufnr)
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
   end
 
-  nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
+  nmap('<leader>cr', vim.lsp.buf.rename, '[R]e[n]ame')
   nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 
   nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')

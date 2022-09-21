@@ -46,47 +46,24 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-"asynchronous code linting
-Plug 'w0rp/ale'
-
 " Features
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
 Plug 'SirVer/ultisnips'
-Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-vinegar'
-
-" Programming
-Plug 'sheerun/vim-polyglot'
-Plug 'jalvesaq/nvim-r'
-
-" Writing
+Plug 'nvim-lua/plenary.nvim'
+Plug 'TimUntersberger/neogit'
 Plug 'lervag/vimtex'
-Plug 'vim-pandoc/vim-pandoc'
-Plug 'vim-pandoc/vim-pandoc-syntax'
-Plug 'rhysd/vim-grammarous'
-Plug 'reedes/vim-pencil'
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
-Plug 'reedes/vim-wordy'
-Plug 'reedes/vim-lexical'
-Plug 'dpelle/vim-LanguageTool'
-Plug 'dpelle/vim-Grammalecte'
-Plug 'ron89/thesaurus_query.vim'
-
-" UI
-Plug 'itchyny/lightline.vim'
-Plug 'NovaDev94/lightline-onedark'
-Plug 'chriskempson/base16-vim'
-Plug 'joshdick/onedark.vim'
-
+Plug 'ishan9299/modus-theme-vim'
 
 call plug#end()
 " }}}
 " Colors {{{ 
+
+lua require'neogit'.setup {}
+
+
+set termguicolors
+colorscheme modus-operandi
 
 " Enable syntax highlighting
 syntax enable 
@@ -94,22 +71,10 @@ syntax enable
 " Set background to match terminal background
 autocmd ColorScheme * highlight! Normal ctermbg=NONE guibg=NONE
 
-"enable 256 color support
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
-else
-    colorscheme onedark
-endif
-
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf-8
 set fileencoding=utf-8
 
-" set airline theme
-let g:airline_theme='onedark'
-" }}}
-" UI {{{ 
 
 " Relative line numbering
 set relativenumber
@@ -224,6 +189,11 @@ set nolist
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
 vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 
+
+" Switch functionality of 0 and ^
+nnoremap 0 ^
+nnoremap ^ 0
+
 " }}}
 " Tabs, windows, buffers {{{
 
@@ -235,9 +205,6 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 " Open file with <Space>t
 nnoremap <Space>t :Files<CR>
 
-" Switch functionality of 0 and ^
-nnoremap 0 ^
-nnoremap ^ 0
 
 " Switch buffers with <Space>b
 nnoremap <Space>b :Buffers<CR> 
@@ -269,8 +236,8 @@ nmap <Space>p <Plug>(grammarous-move-to-previous-error)
 " Vimtex
 " Set default pdf-viewer
 let g:tex_flavor = 'latex'
-set conceallevel=1
-let g:tex_conceal='abdmg'
+set conceallevel=0
+let g:tex_conceal=''
 let g:vimtex_quickfix_mode=0
 let g:vimtex_view_method = 'zathura'
 let g:vimtex_view_general_viewer = 'zathura'
@@ -284,78 +251,6 @@ let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
 let g:UltiSnipsSnippetsDir = $HOME.'/.config/nvim/ultisnips'
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/ultisnips']
 
-" CoC
-
-"Easy align
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
-
-" Vim Pandoc
-" let g:pandoc#command#autoexec_on_writes = 1
-" let g:pandoc#command#autoexec_command = "Pandoc pdf -Vmainfont='Open Sans'"
-" let g:pandoc#command#custom_open = "PandocOpenFile"
-" let g:pandoc#command#prefer_pdf = 1
-nnoremap <Space>y :silent !zathura %:r.pdf &<CR>
-
-" limelight
-let g:limelight_conceal_ctermfg = 240
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
-
-" lightline
-let g:lightline =
-    \ {
-    \ 'colorscheme': 'onedark',
-    \ }
-
-" goyo
-let g:goyo_width = 74
-nnoremap <Space>g :Goyo <CR>
-
-" Vim Pencil
-let g:pencil#wrapModeDefault = 'soft'
-let g:airline_section_x = '%{PencilMode()}'
-let g:pencil#conceallevel=1
-
-" grammarous
-let g:grammarous#use_vim_spelllang = 1
-
-" grammalecte
-let g:grammalecte_cli_py='/usr/local/Grammalecte/pythonpath/grammalecte-cli.py'
-
-" Thesaurus query
-nnoremap <Bslash>t :ThesaurusQueryReplaceCurrentWord<CR>
-
-let g:tq_enabled_backends=["thesaurus_com","openoffice_en","datamuse_com","mthesaur_txt"]
-
-" }}}
-" Custom functions {{{
-
-""" Prose writing
-function! Prose()
-    call pencil#init({'wrap': 'soft'})
-    call lexical#init()
-    
-    set conceallevel=1
-
-    " manual reformatting shortcuts
-    nnoremap <buffer> <silent> Q gqap
-    xnoremap <buffer> <silent> Q gq
-    nnoremap <buffer> <silent> <leader>Q vapJgqap
-    
-    nnoremap <expr> j v:count ? 'j' : 'gj'
-    nnoremap <expr> k v:count ? 'k' : 'gk'
-
-    " Fix last spelling error with <C-L>
-    inoremap <C-L> <c-g>u<Esc>[s1z=`]a<c-g>u
-
-endfunction
-
-" automatically initialize buffer by file type
-autocmd FileType markdown,tex,mkd,text,rst call Prose()
-
-" invoke manually by command for other file types
-command! -nargs=0 Prose call Prose()
 
 " }}}
 " vim:foldmethod=marker:foldlevel=0
