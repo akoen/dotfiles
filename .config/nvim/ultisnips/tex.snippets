@@ -29,7 +29,7 @@ def create_matrix(snip, rows, cols, matrix_str):
 	final_str = old_spacing + "\\begin{"+matrix_str+"}\n"
 	for i in range(rows):
 		final_str += old_spacing + '\t'
-		final_str += " & ".join(['${' + str(i * cols + j + offset) + ':0}' for j in range(cols)])
+		final_str += " & ".join(['${' + str(i * cols + j + offset) + '}' for j in range(cols)])
 		final_str += " \\\\\\\n"
 
 	final_str += old_spacing + "\\end{"+matrix_str+"}$0"
@@ -79,6 +79,11 @@ snippet beg "begin{} / end{}" bA
 \\end{$1}
 endsnippet
 
+snippet sc "section{} / end{}" b
+\\section{$1}
+	$0
+endsnippet
+
 priority 100
 snippet ... "ldots" iA
 \ldots
@@ -124,6 +129,11 @@ endsnippet
 
 snippet pac "Package" b
 \usepackage[${1:options}]{${2:package}}$0
+endsnippet
+
+context "text()"
+snippet img "image" bA
+\includegraphics[width=$1\textwidth]{$0}
 endsnippet
 
 context "text()"
@@ -211,6 +221,12 @@ endsnippet
 context "math()"
 snippet '([A-Za-z])_(\d\d)' "auto subscript2" wrA
 `!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2)`}
+endsnippet
+
+context "math()"
+priority 1
+snippet '([A-Za-z])(\w)\2' "auto subscript letters" wrA
+`!p snip.rv = match.group(1)`_`!p snip.rv = match.group(2)`
 endsnippet
 
 
@@ -550,7 +566,7 @@ endsnippet
 
 context "math()"
 snippet set "set" wA
-\\{$1\\} $0
+\\left\\{$1\\right\\} $0
 endsnippet
 
 snippet || "mid" iA
@@ -682,6 +698,10 @@ context "math()"
 snippet "([a-zA-Z])hat" "hat" riA
 \hat{`!p snip.rv=match.group(1)`}
 endsnippet
+
+snippet "(\\?\w+)(,\.|\.,)" "Vector postfix" riA
+\vec{`!p snip.rv=match.group(1)`}
+endsnippet 
 
 snippet letw "let omega" iA
 Let $\Omega \subset \C$ be open.
@@ -1131,6 +1151,11 @@ endsnippet
 context "math()"
 snippet ;y  "\\mathtt" iA
 \mathtt{$1}$0
+endsnippet
+
+context "math()"
+snippet ;o  "\\operatorname" iA
+\operatorname{$1}$0
 endsnippet
 
 context "math()"
