@@ -98,6 +98,13 @@ vim.o.smartcase = true
 vim.o.hlsearch = true
 vim.o.incsearch = true
 
+-- Scrolling
+vim.o.scrolloff=10
+
+-- Spelling
+vim.o.spell = true
+vim.o.spelllang='en_ca'
+
 -- Substitution
 vim.o.gdefault = true
 
@@ -191,6 +198,7 @@ vim.g.vimtex_view_method = 'zathura'
 vim.g.vimtex_view_general_viewer = 'zathura'
 
 -- Gilles Castel LaTeX setup
+<<<<<<< HEAD
 vim.cmd([[nnoremap <leader>lc : silent exec '.!inkscape-figures create "'.getline('.').'" "'.b:vimtex.root.'/figures/"'<CR><CR>:w<CR>]])
 vim.cmd([[nnoremap <leader>le : silent exec '!inkscape-figures edit "'.b:vimtex.root.'/figures/" > /dev/null 2>&1 &'<CR><CR>:redraw!<CR>]])
 

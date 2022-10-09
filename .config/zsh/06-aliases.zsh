@@ -37,3 +37,5 @@ alias sysu='systemctl --user'
 
 # Support command aliases
 alias sudo='sudo '
+
+alias dc='docker compose'
