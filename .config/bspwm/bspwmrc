@@ -63,9 +63,8 @@ picom --experimental-backends &
 nextcloud &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
-killall firefox tilix geary emacs minetime
+killall tilix geary emacs minetime
 # Default workspace
-bspc rule -a firefox -o desktop=I && firefox &
 # bspc rule -a Emacs -o desktop=I && emacsclient -nc &
 
 # Emacs needs a few seconds to start

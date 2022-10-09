@@ -72,11 +72,10 @@ super + Escape ; {l,s}
 
 ###Volume
 XF86AudioMute
- pulsemixer --toggle-mute
-
+ pamixer -t
 
 XF86Audio{Raise,Lower}Volume
- pulsemixer --change-volume {+,-}5
+ pamixer -{i,d}5
 
 XF86AudioPlay
  playerctl play-pause

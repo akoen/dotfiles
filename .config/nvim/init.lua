@@ -191,7 +191,7 @@ vim.g.vimtex_view_method = 'zathura'
 vim.g.vimtex_view_general_viewer = 'zathura'
 
 -- Gilles Castel LaTeX setup
-vim.cmd([[nnoremap  <Esc>: silent exec '.!inkscape-figures create "'.getline('.').'" "'.b:vimtex.root.'/figures/"'<CR><CR>:w<CR>]])
+vim.cmd([[nnoremap <leader>lc : silent exec '.!inkscape-figures create "'.getline('.').'" "'.b:vimtex.root.'/figures/"'<CR><CR>:w<CR>]])
 vim.cmd([[nnoremap <leader>le : silent exec '!inkscape-figures edit "'.b:vimtex.root.'/figures/" > /dev/null 2>&1 &'<CR><CR>:redraw!<CR>]])
 
 --- clipboard-image

@@ -673,6 +673,10 @@ snippet "([a-zA-Z])hat" "hat" riA
 \hat{`!p snip.rv=match.group(1)`}
 endsnippet
 
+snippet "(\\?\w+)(,\.|\.,)" "Vector postfix" riA
+\vec{`!p snip.rv=match.group(1)`}
+endsnippet
+
 snippet letw "let omega" iA
 Let $\Omega \subset \C$ be open.
 endsnippet
@@ -1047,11 +1051,6 @@ snippet ;T  "\\overline" iA
 endsnippet
 
 context "math()"
-snippet ;_ "\\underline" iA
-\underline{$1}$0
-endsnippet
-
-context "math()"
 snippet ;]  "\\overbrace" iA
 \overbrace{$1}$0
 endsnippet
@@ -1146,6 +1145,11 @@ endsnippet
 context "math()"
 snippet ;3  "\\scriptscriptstyle" iA
 \scriptscriptstyle{$1}$0
+endsnippet
+
+context "math()"
+snippet ;_ "underset" iA
+\underset{$1}{$2}{$0}
 endsnippet
 
 # (  \\left( ? \\right)
