@@ -317,7 +317,7 @@ snippet lr[ "left[ right]" i
 endsnippet
 
 snippet lra "leftangle rightangle" iA
-\left<${1:${VISUAL}} \right>$0
+\left<${1:${VISUAL}} \right> $0
 endsnippet
 
 context "math()"
@@ -326,7 +326,7 @@ snippet conj "conjugate" iA
 endsnippet
 
 snippet sum "sum" w
-\sum_{n=${1:1}}^{${2:\infty}} ${3:a_n z^n}
+\sum_{${1:n=1}}^{${2:\infty}} ${3:a_n z^n}
 endsnippet
 
 snippet taylor "taylor" w
@@ -404,46 +404,46 @@ snippet AA "forall" iA
 \forall 
 endsnippet
 
-context "math()"
-snippet xnn "xn" iA
-x_{n}
-endsnippet
-
-context "math()"
-snippet ynn "yn" iA
-y_{n}
-endsnippet
-
-
-context "math()"
-snippet xii "xi" iA
-x_{i}
-endsnippet
-
-context "math()"
-snippet yii "yi" iA
-y_{i}
-endsnippet
-
-context "math()"
-snippet xjj "xj" iA
-x_{j}
-endsnippet
-
-context "math()"
-snippet yjj "yj" iA
-y_{j}
-endsnippet
+# context "math()"
+# snippet xnn "xn" iA
+# x_{n}
+# endsnippet
+#
+# context "math()"
+# snippet ynn "yn" iA
+# y_{n}
+# endsnippet
+#
+#
+# context "math()"
+# snippet xii "xi" iA
+# x_{i}
+# endsnippet
+#
+# context "math()"
+# snippet yii "yi" iA
+# y_{i}
+# endsnippet
+#
+# context "math()"
+# snippet xjj "xj" iA
+# x_{j}
+# endsnippet
+#
+# context "math()"
+# snippet yjj "yj" iA
+# y_{j}
+# endsnippet
 
 context "math()"
 snippet xp1 "x" iA
 x_{n+1}
 endsnippet
 
-context "math()"
-snippet xmm "x" iA
-x_{m}
-endsnippet
+# context "math()"
+# snippet xmm "x" iA
+# x_{m}
+# endsnippet
 
 snippet R0+ "R0+" iA
 \\R_0^+
@@ -1181,6 +1181,11 @@ endsnippet
 context "math()"
 snippet ;_ "underset" iA
 \underset{$1}{$2}{$0}
+endsnippet
+
+context "math()"
+snippet ;; "default" iA
+;
 endsnippet
 
 # (  \\left( ? \\right)
