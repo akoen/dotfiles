@@ -77,6 +77,11 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
+
+--- Performance
+vim.o.lazyredraw = true
+vim.o.ttyfast = true
+
 vim.o.hlsearch = false
 vim.wo.number = true
 vim.wo.relativenumber = true
