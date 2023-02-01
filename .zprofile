@@ -17,7 +17,7 @@ if [ $(cat /etc/hostname) = falcon ]; then
     export QT_AUTO_SCREEN_SCALE_FACTOR=1  # can cause issues with text size
 fi
 
-# export QT_QPA_PLATFORMTHEME="qt5ct"
+export QT_QPA_PLATFORMTHEME="qt5ct"
 
 # Cleanup
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -58,11 +58,12 @@ export NNN_PLUG='p:preview-tabbed'
 export npm_config_prefix="$HOME/.local"
 
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
-    #source $HOME/.config/wayland-setup
+    # source $HOME/.config/wayland-setup
     eval $(gnome-keyring-daemon --start)
     export SSH_AUTH_SOCK
     systemctl --user import-environment SSH_AUTH_SOCK
 
     exec startx -- -dpi 144
     # systemd-cat --identifier=river river $@
+    # systemd-cat --identifier=sway sway --unsupported-gpu $@
 fi

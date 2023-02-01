@@ -91,9 +91,10 @@ super + Print
  # BRIGHTNESS
  
  # Brightness goes up
- XF86MonBrightnessUp
+XF86MonBrightnessUp
  light -A 5;
- super + Up
+
+super + Up
  ddcutil setvcp 10 + 5
 
 super + shift + Print
