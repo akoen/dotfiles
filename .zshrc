@@ -3,7 +3,7 @@
 
 
 # History
-HISTFILE=~/.histfile
+HISTFILE=~/Docs/.histfile
 HISTSIZE=100000
 SAVEHIST=100000
 setopt INC_APPEND_HISTORY
