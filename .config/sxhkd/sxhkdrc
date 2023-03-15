@@ -17,8 +17,11 @@ super + shift + space
 super + ctrl + space
  rofi-dirs
 
+super + shift + c
+ rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
+
 super + f
- nemo
+ dolphin
  # dired
 
 super + Tab

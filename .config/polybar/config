@@ -5,7 +5,7 @@ include-file = /home/$USER/.config/polybar/colors
 monitor = ${env:MONITOR:}
 enable-ipc = true
 dpi = ${xrdb:Xft.dpi:-1}
-height = 40 ;; Desktop
+height = 40
 fixed-center = true
 wm-restack = bspwm
 

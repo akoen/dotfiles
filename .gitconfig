@@ -1,7 +1,7 @@
 # This is Git's per-user configuration file.
 [user]
-	name = akoen
-	email = arw.koen@gmail.com
+	name = Alex Koen
+	email = akoen@mailbox.org
 [credential]
 	helper = /usr/lib/git-core/git-credential-libsecret
 [github]
@@ -28,11 +28,6 @@
         insteadOf = aur:
 [url "aur@aur.archlinux.org:"]
         pushInsteadOf = "aur:"
-
-
-# This next lines include Netlify's Git Credential Helper configuration in your Git configuration.
-[include]
-  path = /home/alex/.config/netlify/helper/git-config
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f

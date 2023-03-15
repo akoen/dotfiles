@@ -61,9 +61,15 @@ if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
     # source $HOME/.config/wayland-setup
     eval $(gnome-keyring-daemon --start)
     export SSH_AUTH_SOCK
-    systemctl --user import-environment SSH_AUTH_SOCK
+    SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
     exec startx -- -dpi 144
     # systemd-cat --identifier=river river $@
     # systemd-cat --identifier=sway sway --unsupported-gpu $@
 fi
+
+export QSYS_ROOTDIR="/home/alex/.cache/paru/clone/quartus-free/pkg/quartus-free-quartus/opt/intelFPGA/21.1/quartus/sopc_builder/bin"
+
+# Added by Toolbox App
+export PATH="$PATH:/home/alex/.local/share/JetBrains/Toolbox/scripts"
+

@@ -57,11 +57,10 @@ $HOME/.config/polybar/launch.sh
 redshift-gtk -l 49.1:-123.7 -t 6000:2700 &
 flameshot &
 dunst &
-nm-applet &
-copyq &
+# nm-applet &
+greenclip daemon &
 picom --experimental-backends &
-nextcloud &
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+# /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
 # Vim LaTeX
 inkscape-figures watch &
