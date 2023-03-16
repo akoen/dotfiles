@@ -29,6 +29,14 @@ require('packer').startup(function(use)
   use 'lervag/vimtex'
   use 'ekickx/clipboard-image.nvim'
 
+  use {
+    'glacambre/firenvim',
+    run = function() vim.fn['firenvim#install'](0) end 
+  }
+
+  use {'subnut/nvim-ghost.nvim',
+    run = function() vim.fn['nvim_ghost#installer#install']() end
+  }
 
   -- Fuzzy Finder (files, lsp, etc)
   use { 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = { 'nvim-lua/plenary.nvim' } }
@@ -200,7 +208,8 @@ vim.o.conceallevel=0
 vim.g.tex_conceal=''
 vim.g.vimtex_quickfix_mode=0
 vim.g.vimtex_view_method = 'zathura'
-vim.g.vimtex_view_general_viewer = 'zathura'
+-- vim.g.vimtex_view_general_viewer = 'zathura'
+-- vim.g.vimtex_compiler_progname = 'nvr' -- for synctex
 
 -- Gilles Castel LaTeX setup
 vim.cmd([[nnoremap <leader>lc : silent exec '.!inkscape-figures create "'.getline('.').'" "'.b:vimtex.root.'/figures/"'<CR><CR>:w<CR>]])

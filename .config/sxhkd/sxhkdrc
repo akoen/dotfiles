@@ -22,7 +22,6 @@ super + shift + c
 
 super + f
  dolphin
- # dired
 
 super + Tab
  emacsclient -nc

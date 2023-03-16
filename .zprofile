@@ -25,6 +25,7 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
 
 export PATH=$PATH:~/.local/bin
+export PATH=$PATH:~/scripts
 export MOZ_USE_XINPUT2=1
 
 export ANDROID_HOME=/opt/android-sdk
@@ -72,4 +73,3 @@ export QSYS_ROOTDIR="/home/alex/.cache/paru/clone/quartus-free/pkg/quartus-free-
 
 # Added by Toolbox App
 export PATH="$PATH:/home/alex/.local/share/JetBrains/Toolbox/scripts"
-
