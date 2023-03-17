@@ -1,0 +1,12 @@
+[submodule "/home/alex/.config/zsh/plugins/fast-syntax-highlighting"]
+	path = /home/alex/.config/zsh/plugins/fast-syntax-highlighting
+	url = https://github.com/zdharma-continuum/fast-syntax-highlighting
+[submodule "/home/alex/.config/zsh/plugins/powerlevel10k"]
+	path = /home/alex/.config/zsh/plugins/powerlevel10k
+	url = https://github.com/romkatv/powerlevel10k
+[submodule "/home/alex/.config/zsh/plugins/zsh-z"]
+	path = /home/alex/.config/zsh/plugins/zsh-z
+	url = https://github.com/agkozak/zsh-z
+[submodule "/home/alex/.config/zsh/plugins/fzf-git"]
+	path = /home/alex/.config/zsh/plugins/fzf-git
+	url = https://github.com/junegunn/fzf-git.sh

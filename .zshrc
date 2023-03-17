@@ -1,4 +1,4 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Enable Powerlevel10k instant propt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
@@ -13,7 +13,7 @@ SAVEHIST=100000
 setopt INC_APPEND_HISTORY
 setopt HIST_FIND_NO_DUPS
 
-# Use emacs keybdings
+# Use vi keybdings
 bindkey -v
 
 # press Ctrl-z to return to vim
@@ -120,10 +120,10 @@ ZSH_PLUGIN_DIR=/home/alex/.config/zsh/plugins
 
 source $ZSH_PLUGIN_DIR/powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f $ZSH_PLUGIN_DIR/powerlevel10k/.p10k.zsh ]] || source $ZSH_PLUGIN_DIR/powerlevel10k/.p10k.zsh
+[[ ! -f $ZSH_PLUGIN_DIR/.p10k.zsh ]] || source $ZSH_PLUGIN_DIR/.p10k.zsh
 
 # Git integration
-source $ZSH_PLUGIN_DIR/fzf-git.sh
+source $ZSH_PLUGIN_DIR/fzf-git/fzf-git.sh
 gco() {
   local selected=$(_fzf_git_each_ref --no-multi)
   [ -n "$selected" ] && git switch "$selected"
@@ -154,6 +154,9 @@ function zle-keymap-select () {
 
 # Bind the callback
 zle -N zle-keymap-select
+
+
+bindkey -M vicmd _ insert-last-word
 
 # Reduce latency when pressing <Esc>
 export KEYTIMEOUT=1
