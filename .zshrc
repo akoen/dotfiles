@@ -5,12 +5,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# load configs
-# for config (~/.config/zsh/*.zsh) source $config
-
-# Completion (must be at end)
-autoload -Uz compinit && compinit
-
 
 # History
 HISTFILE=~/Docs/.histfile
@@ -20,7 +14,7 @@ setopt INC_APPEND_HISTORY
 setopt HIST_FIND_NO_DUPS
 
 # Use emacs keybdings
-bindkey -e
+bindkey -v
 
 # press Ctrl-z to return to vim
 fancy-ctrl-z () {
@@ -122,7 +116,7 @@ tdw() {
 }
 
 
-ZSH_PLUGIN_DIR=/home/alex/.config/zsh/plugins/
+ZSH_PLUGIN_DIR=/home/alex/.config/zsh/plugins
 
 source $ZSH_PLUGIN_DIR/powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -136,6 +130,33 @@ gco() {
 }
 
 source $ZSH_PLUGIN_DIR/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+source $ZSH_PLUGIN_DIR/zsh-z/zsh-z.plugin.zsh
 
-[[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
+echo -ne '\e[5 q'
 
+function zle-keymap-select () {
+    # Only supported in these terminals
+    if [ "$TERM" = "xterm-256color" ] || [ "$TERM" = "xterm-kitty" ] || [ "$TERM" = "screen-256color" ]; then
+        if [ $KEYMAP = vicmd ]; then
+            # Set block cursor
+            echo -ne '\e[1 q'
+        else
+            # Set beam cursor
+            echo -ne '\e[5 q'
+        fi
+    fi
+
+    # if typeset -f prompt_pure_update_vim_prompt_widget > /dev/null; then
+    #     # Refresh prompt and call Pure super function
+    #     prompt_pure_update_vim_prompt_widget
+    # fi
+}
+
+# Bind the callback
+zle -N zle-keymap-select
+
+# Reduce latency when pressing <Esc>
+export KEYTIMEOUT=1
+
+# Completion (must be at end)
+autoload -Uz compinit && compinit
