@@ -163,3 +163,4 @@ export KEYTIMEOUT=1
 
 # Completion (must be at end)
 autoload -Uz compinit && compinit
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' # small letters match capital letters
