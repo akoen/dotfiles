@@ -30,15 +30,13 @@ zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
 
 # ALIASES
-alias g='git'
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias vim='nvim'
-alias spotify='spotify --force-device-scale-factor=2'
 alias update='sudo pacman -Syu'
 alias ls='ls --color=auto'
 alias :q="exit"
 alias cat='bat'
-alias -g G='| grep' #now you can do: ls foo G something
+alias -g G='| rg' #now you can do: ls foo G something
 alias pkgs="pacman -Slq | fzf --multi --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S"
 alias xclip="xclip -selection c"
 alias nnn='NNN_FIFO="$(mktemp -u)" nnn'
@@ -49,6 +47,23 @@ alias dc='docker compose'
 alias td="todoist-cli --color"
 alias tds='td sync'
 alias tdt='td l --filter "(today | overdue)"'
+
+setopt auto_pushd
+alias cdd='dirs -v && read index && let "index=$index+0" && cd ~"$index" && let "index=$index+1" && popd -q +"$index"'
+
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
+g() {
+  if [ $# -eq 0 ]; then
+    git status -sb
+  else
+    git "$@"
+  fi
+}
+
+mcd() { mkdir -p "$1" && cd "$1"; }
 
 # DIRENV
 eval "$(direnv hook zsh)"
