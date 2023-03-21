@@ -57,13 +57,19 @@ require('lazy').setup({
   },
 
 
- {'ishan9299/modus-theme-vim',
-   config = function()
-     vim.cmd [[colorscheme modus-vivendi]]
-   end
- },
+  {'ishan9299/modus-theme-vim',
+    config = function()
+      -- vim.cmd [[colorscheme modus-operandi]]
+    end
+  },
 
-  
+  {'projekt0n/github-nvim-theme',
+    config = function()
+      require('github-theme').setup({
+        theme_style = "light",
+      })
+    end
+  },
 
   {'ggandor/leap.nvim',
     config = function() require('leap').add_default_mappings() end
@@ -149,11 +155,6 @@ vim.wo.signcolumn = 'yes'
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
-
--- [[ Basic Keymaps ]]
--- Set <space> as the leader key
--- See `:help mapleader`
---  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
@@ -369,6 +370,14 @@ local on_attach = function(_, bufnr)
 
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
   end
+
+  vim.diagnostic.config({
+    virtual_text = false,
+    signs = true,
+    underline = true,
+    update_in_insert = false,
+    severity_sort = false,
+  })
 
   nmap('<leader>cr', vim.lsp.buf.rename, '[R]e[n]ame')
   nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')

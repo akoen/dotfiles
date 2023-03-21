@@ -14,7 +14,7 @@ setopt INC_APPEND_HISTORY
 setopt HIST_FIND_NO_DUPS
 
 # Use vi keybdings
-bindkey -v
+bindkey -e
 
 # press Ctrl-z to return to vim
 fancy-ctrl-z () {
@@ -147,7 +147,7 @@ gco() {
 source $ZSH_PLUGIN_DIR/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 source $ZSH_PLUGIN_DIR/zsh-z/zsh-z.plugin.zsh
 
-echo -ne '\e[5 q'
+# echo -ne '\e[5 q'
 
 function zle-keymap-select () {
     # Only supported in these terminals
