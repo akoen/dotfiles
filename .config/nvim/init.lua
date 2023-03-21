@@ -1,6 +1,7 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = '\\'
 
+-- TODO: Consider moving to module config like https://github.com/imbacraft/dusk.nvim/blob/master/nvim/lua/core/pack.lua
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -14,16 +15,27 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
-  { 'TimUntersberger/neogit', dependencies = 'nvim-lua/plenary.nvim' },
-
   {'editorconfig/editorconfig-vim'},
+
+  { 'TimUntersberger/neogit', dependencies = 'nvim-lua/plenary.nvim' },
   
-  { 'lewis6991/gitsigns.nvim', dependencies = { 'nvim-lua/plenary.nvim' }},
+  { 'lewis6991/gitsigns.nvim', dependencies =  'nvim-lua/plenary.nvim' },
+
+  {'folke/todo-comments.nvim', 
+    dependencies = 'nvim-lua/plenary.nvim',
+    config = function () require('todo-comments').setup() end
+  },
 
   {'numToStr/Comment.nvim', 
     config = function() 
       require('Comment').setup()
     end
+  },
+
+  {'akinsho/toggleterm.nvim', 
+    opts = {
+      open_mapping = [[<c-\>]]
+    }
   },
 
   'nvim-treesitter/nvim-treesitter',                                    
@@ -33,22 +45,31 @@ require('lazy').setup({
   'neovim/nvim-lspconfig',                                            
 
   {'hrsh7th/nvim-cmp', 
-
     dependencies = { 'hrsh7th/cmp-nvim-lsp' } 
   },
 
-
-  {'ishan9299/modus-theme-vim',
-    config = function()
-      vim.o.termguicolors = true
-      vim.cmd [[colorscheme modus-operandi]]
-    end
+  {'folke/trouble.nvim',
+    dependencies = {'nvim-tree/nvim-web-devicons'},
+    config = true,
+    keys = {
+      {'<leader>le', '<cmd>TroubleToggle<cr>', {silent = true, noremap = true}}
+    }
   },
 
-  {'ggandor/lightspeed.nvim',
-    keys = {
-      {'s', '<Plug>Lightspeed_omni_s'}
-    }
+
+ {'ishan9299/modus-theme-vim',
+   config = function()
+     vim.cmd [[colorscheme modus-vivendi]]
+   end
+ },
+
+  
+
+  {'ggandor/leap.nvim',
+    config = function() require('leap').add_default_mappings() end
+    -- keys = {
+    --   {'s', '<Plug>Lightspeed_omni_s'}
+    -- }
   },
 
   'nvim-lualine/lualine.nvim',
@@ -67,10 +88,9 @@ require('lazy').setup({
     keys = {
       {'<leader>pp', function() require'telescope'.extensions.projects.projects{} end}
     },
-    config = function()
-      require("project_nvim").setup {
-        manual_mode = false,
-      }
+    -- FIXME: Does not work with config()
+    init = function()
+      require("project_nvim").setup()
       require('telescope').load_extension('projects')
     end
   },
@@ -91,6 +111,8 @@ require('lazy').setup({
 -- Vim options
 vim.o.lazyredraw = true
 vim.o.ttyfast = true
+
+vim.o.termguicolors = true
 
 vim.o.hlsearch = false
 vim.wo.number = true
