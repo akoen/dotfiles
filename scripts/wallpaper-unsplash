@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Define the temporary file location
+TEMP_FILE="/tmp/wallpaper.jpg"
+
+# Fetch a random image from Unsplash and store it in the temporary file
+curl -s -L "source.unsplash.com/2560x1440?wallpaper" -o "${TEMP_FILE}"
+
+# Set the downloaded image as wallpaper using feh
+feh --bg-fill "${TEMP_FILE}"
+

@@ -45,7 +45,7 @@ bspc rule -a Emacs state=tiled
 
 # Set wallpaper randomly
 # feh --bg-fill $(find ~/Pictures/Wallpapers/**/*.jpg | shuf -n 1) $
-$HOME/scripts/spotlight-wallpaper-unsplash &
+$HOME/scripts/wallpaper-unsplash &
 
 # Set cursor to pointer instead of cross
 xsetroot -cursor_name left_ptr

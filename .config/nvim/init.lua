@@ -17,35 +17,47 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   {'editorconfig/editorconfig-vim'},
 
-  { 'TimUntersberger/neogit', dependencies = 'nvim-lua/plenary.nvim' },
-  
+  {'TimUntersberger/neogit',
+    dependencies = 'nvim-lua/plenary.nvim',
+    keys = {
+      {'<leader>gg', '<cmd>Neogit<cr>', {silent = true, noremap = true}}
+    },
+    config = true
+  },
+
   { 'lewis6991/gitsigns.nvim', dependencies =  'nvim-lua/plenary.nvim' },
 
-  {'folke/todo-comments.nvim', 
+  {'folke/todo-comments.nvim',
     dependencies = 'nvim-lua/plenary.nvim',
     config = function () require('todo-comments').setup() end
   },
 
-  {'numToStr/Comment.nvim', 
-    config = function() 
+  {'numToStr/Comment.nvim',
+    config = function()
       require('Comment').setup()
     end
   },
 
-  {'akinsho/toggleterm.nvim', 
+  {'stevearc/overseer.nvim',
+    opts = {
+      strategy = "toggleterm"
+    }
+  },
+
+  {'akinsho/toggleterm.nvim',
     opts = {
       open_mapping = [[<c-\>]]
     }
   },
 
-  'nvim-treesitter/nvim-treesitter',                                    
+  'nvim-treesitter/nvim-treesitter',
 
-  'nvim-treesitter/nvim-treesitter-textobjects',                       
+  'nvim-treesitter/nvim-treesitter-textobjects',
 
-  'neovim/nvim-lspconfig',                                            
+  'neovim/nvim-lspconfig',
 
-  {'hrsh7th/nvim-cmp', 
-    dependencies = { 'hrsh7th/cmp-nvim-lsp' } 
+  {'hrsh7th/nvim-cmp',
+    dependencies = { 'hrsh7th/cmp-nvim-lsp' }
   },
 
   {'folke/trouble.nvim',
@@ -73,9 +85,18 @@ require('lazy').setup({
 
   {'ggandor/leap.nvim',
     config = function() require('leap').add_default_mappings() end
-    -- keys = {
-    --   {'s', '<Plug>Lightspeed_omni_s'}
-    -- }
+  },
+
+  {'ggandor/leap-spooky.nvim',
+    config = function()
+      require('leap-spooky').setup{
+        affixes = {
+          remote   = { window = 'r', cross_window = 'R' },
+          magnetic = { window = 'm', cross_window = 'M' },
+        },
+        paste_on_remote_yank = false,
+      }
+    end
   },
 
   'nvim-lualine/lualine.nvim',
@@ -103,7 +124,7 @@ require('lazy').setup({
 
   {'nvim-telescope/telescope-fzf-native.nvim',
     run = 'make',
-    cond = vim.fn.executable "make" == 1 
+    cond = vim.fn.executable "make" == 1
   },
 
   -- zf proves a better file finding experience
@@ -111,7 +132,16 @@ require('lazy').setup({
     config = function()
       require'telescope'.load_extension("zf-native")
     end
-    },
+  },
+
+  {'https://github.com/vim-scripts/asm8051.vim',
+    ft = 'asm',
+    config = function()
+      vim.cmd('autocmd BufNewFile,BufRead *.asm set filetype=asm8051')
+    end
+  },
+
+  {'github/copilot.vim'}
 })
 
 -- Vim options
@@ -186,17 +216,13 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 require('lualine').setup {
   options = {
     icons_enabled = false,
-    theme = 'onedark',
+    theme = 'auto',
     component_separators = '|',
     section_separators = '',
   },
 }
 
 -- Enable Comment.nvim
-
-local neogit = require('neogit')
-
-neogit.setup {}
 
 -- Enable `lukas-reineke/indent-blankline.nvim`
 -- See `:help indent_blankline.txt`
@@ -222,8 +248,8 @@ vim.g.vimtex_view_method = 'zathura'
 -- vim.g.vimtex_compiler_progname = 'nvr' -- for synctex
 
 -- Gilles Castel LaTeX setup
-vim.cmd([[nnoremap <leader>lc : silent exec '.!inkscape-figures create "'.getline('.').'" "'.b:vimtex.root.'/figures/"'<CR><CR>:w<CR>]])
-vim.cmd([[nnoremap <leader>le : silent exec '!inkscape-figures edit "'.b:vimtex.root.'/figures/" > /dev/null 2>&1 &'<CR><CR>:redraw!<CR>]])
+-- vim.cmd([[nnoremap <leader>lc : silent exec '.!inkscape-figures create "'.getline('.').'" "'.b:vimtex.root.'/figures/"'<CR><CR>:w<CR>]])
+-- vim.cmd([[nnoremap <leader>le : silent exec '!inkscape-figures edit "'.b:vimtex.root.'/figures/" > /dev/null 2>&1 &'<CR><CR>:redraw!<CR>]])
 
 --- clipboard-image
 require'clipboard-image'.setup {
@@ -272,7 +298,7 @@ pcall(require('telescope').load_extension, 'fzf')
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>fr', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
 vim.keymap.set('n', '<leader>bb', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
-vim.keymap.set('n', '<leader>x', require('telescope.builtin').commands, { desc = '[ ] Find existing buffers' })
+vim.keymap.set('n', '<leader>x', require('telescope.builtin').commands, { desc = '[ ] Command list' })
 vim.keymap.set('n', '<leader>/', function()
   -- You can pass additional configuration to telescope to change theme, layout, etc.
   require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
@@ -372,7 +398,7 @@ local on_attach = function(_, bufnr)
   end
 
   vim.diagnostic.config({
-    virtual_text = false,
+    virtual_text = true,
     signs = true,
     underline = true,
     update_in_insert = false,
@@ -415,12 +441,26 @@ end
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 -- Enable the following language servers
-local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver' }
+local servers = {
+  clangd = {},
+  lua_ls = {
+    Lua = {
+      runtime = { version = 'LuaJIT' },
+      diagnostics = { globals = {'vim'} },
+      workspace = {
+        library = vim.api.nvim_get_runtime_file("", true),
+        checkThirdParty = false
+      },
+      telemetry = { enable = false },
+    },
+  }
+}
 
-for _, lsp in ipairs(servers) do
+for lsp, settings in pairs(servers) do
   require('lspconfig')[lsp].setup {
     on_attach = on_attach,
     capabilities = capabilities,
+    settings = settings,
   }
 end
 
@@ -436,6 +476,7 @@ table.insert(runtime_path, 'lua/?/init.lua')
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
 
+
 cmp.setup {
   snippet = {
     expand = function(args)
@@ -446,28 +487,11 @@ cmp.setup {
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.abort(),
     ['<CR>'] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     },
-    ['<Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
-      else
-        fallback()
-      end
-    end, { 'i', 's' }),
-    ['<S-Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
-      else
-        fallback()
-      end
-    end, { 'i', 's' }),
   },
   sources = {
     { name = 'nvim_lsp' },
@@ -475,5 +499,69 @@ cmp.setup {
   },
 }
 
--- The line beneath this is called `modeline`. See `:help modeline`
+
+
+-- Task runner
+local tasks = {}
+
+function load_tasks()
+
+  local task_file = io.open("./tasks", "r")
+  if task_file == nil then
+    return tasks
+  end
+
+  for line in task_file:lines() do
+    local name, command = string.match(line, "^(.+):%s*(.+)$")
+    if name ~= nil and command ~= nil then
+      tasks[name] = command
+    end
+  end
+
+  task_file:close()
+  return tasks
+end
+
+function run_task()
+
+  load_tasks()
+  local task_names = {}
+  for name, _ in pairs(tasks) do
+    table.insert(task_names, name)
+  end
+
+  if #task_names == 0 then
+    print("No tasks found")
+    return
+  end
+
+  local on_choice = function(selected_index)
+    if selected_index == nil then
+      return
+    end
+    local selected_task = tasks[selected_index]
+    local toggleterm = require("toggleterm")
+    toggleterm.exec(selected_task)
+  end
+
+  vim.ui.select(task_names, {
+    title = "Select a task",
+    prompt = "Task: ",
+  },
+    on_choice)
+end
+
+function load_task(task_name)
+  local task_func = tasks[task_name]
+  if not task_func then
+    print("Task not found:", task_name)
+    return
+  end
+
+  _G[task_name] = task_func
+  print("Loaded task:", task_name)
+end
+
+vim.api.nvim_set_keymap("n", "<leader>r", ":lua run_task()<CR>", { noremap = true })
+
 -- vim: ts=2 sts=2 sw=2 et
