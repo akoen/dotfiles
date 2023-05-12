@@ -73,8 +73,9 @@ killall tilix geary emacs minetime
 # Emacs needs a few seconds to start
 # sleep 5
 
-bspc rule -a Chromium -o desktop=VII && spotify-launcher
-bspc rule -a kalendar -o desktop=X && kalendar &
+# bspc rule -a Chromium -o desktop=VII &&
+    spotify-launcher &
+bspc rule -a Morgen -o desktop=X && morgen &
 bspc rule -a Ferdium -o desktop=X && ferdium &
 bspc node @X:/ -R 180
 

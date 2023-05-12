@@ -21,7 +21,7 @@ super + shift + c
  rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 
 super + f
- dolphin
+ nemo
 
 super + Escape
  alacritty -e nvim
